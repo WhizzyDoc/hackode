@@ -12,9 +12,10 @@ body {
     max-width:100%;
     overflow-x: hidden;
 }
+
 .loader {
-  width: 120px;
-  height: 50px;
+  width: 150px;
+  height: 40px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -27,25 +28,28 @@ body {
   color: #fff;
 } 
 .loader .ball {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: rgba(0, 140, 255, 0.1);
+  background: lightblue;
   animation: wbounce .4s alternate infinite;
 }
 .loader .ball:nth-child(2) {
-  animation-delay: .13s;
+  animation-delay: .1s;
 }
 .loader .ball:nth-child(3) {
-  animation-delay: .26s;
+  animation-delay: .2s;
+}
+.loader .ball:nth-child(4) {
+  animation-delay: .3s;
 }
 @keyframes wbounce {
-  from {transform: scaleX(1.25)}
-  to {transform: translateY(-30px) scaleX(1)}
+  from {transform: scale(0)}
+  to {transform: scale(1)}
 }
 @-webkit-keyframes wbounce {
-  from {transform: scaleX(1.25)}
-  to {transform: translateY(-30px) scaleX(1)}
+  from {transform: scale(0)}
+  to {transform: scale(1)}
 }
 /* The side navigation menu */
 .sidenav {
@@ -612,38 +616,7 @@ text-align: justify;
   padding: 20px;
 }
 
-/* Employees Page */
-.emp-table tr th:nth-child(1) {
-  min-width: 250px;
-  max-width: 100%;
-}
-.emp-table tr th:nth-child(2) {
-  min-width: 90px !important;
-}
-.emp-table tr th:nth-child(3) {
-  min-width: 90px !important;
-}
-.emp-table tr th:nth-child(4) {
-  min-width: 70px !important;
-}
-.emp-table tr th:nth-child(5) {
-  min-width: 100px !important;
-}
-@media screen and (max-width:600px) {
-  .emp-table tr th:nth-child(3) {display:none}
-  .emp-table tr td:nth-child(3) {display:none}
-  #emp_per_page {display:none;}
-}
-@media screen and (max-width:500px) {
-  .emp-table tr th:nth-child(4) {display:none}
-  .emp-table tr td:nth-child(4) {display:none}
-  .sort-filter {display:none;}
-}
-@media screen and (max-width:400px) {
-  .emp-table tr th:nth-child(2) {display:none}
-  .emp-table tr td:nth-child(2) {display:none}
-  .cat-filter {display:none;}
-}
+
 .emp-head {
   display: flex;
   justify-content: space-between;
@@ -731,113 +704,39 @@ text-align: justify;
   justify-content: space-between;
   align-items: center;
 }
-.iframe-content {
+
+.c-item {
+  width: 130px;
+  height: auto;
+  cursor: pointer;
+  margin: 5px;
+}
+.c-item img {
   width: 100%;
-  min-height: 600px;
-  border: 1px solid lightblue;
+  height: 130px;
 }
-
-/* Resume */
-.main-page {
-  width: 210mm;
-  min-height: 297mm;
-  margin: 10mm auto;
-  background: #fff;
-  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-}
-@media screen and (max-width:800px) {
-  .main-page {
-    transform: scale(0.8);
-    margin-top: -50px;
-  }
-}
-@media screen and (max-width:600px) {
-  .main-page {
-    transform: scale(0.6);
-    margin-top: -200px;
-    margin-left: -150px;
-  }
-}
-@media screen and (max-width:500px) {
-  .main-page {
-    transform: scale(0.5);
-    margin-top: -250px;
-    margin-left: -170px;
-  }
-}
-@media screen and (max-width:400px) {
-  .main-page {
-    transform: scale(0.4);
-    margin-top: -300px;
-    margin-left: -230px;
-  }
-}
-.sub-page {
-  padding: 1cm;
-  min-height: 297mm;
-}
-.page-head img {
-  width: 30mm;
-  height: 30mm;
-  border-radius: 4mm;
-}
-.res-header {
+.c-item .c-title {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 600;
   background: lightblue;
-  padding: 8px 12px;
-  width: fit-content;
-  border-radius: 0 20px 0 0;
-  color: black !important;
-  margin-bottom: 0;
+  color: #000;
+  text-align: center;
+  margin-top: 5px;
 }
-.res-content {
-  border-top: 1px solid lightblue;
-  margin-top:0;  
-  padding: 5px;
-}
-.res-content ul {
-  padding-left:30px;
-}
-@page {
-  size: A4;
-  margin: 0;
-}
-@media print {
-  html, body {
-    width: 210mm;
-    height: 297mm;
-  }
-  .res-btn {display:none}
-  .main-page {
-    margin: 0;
-    border: initial;
-    border-radius: initial;
-    width: initial;
-    min-height: initial;
-    box-shadow: initial;
-    background: initial;
-    page-break-after: always;
-  }
-}
-
-.code-header {
-  background: #222;
-  color: #fff;
+.c-item .fa {
+  width: 130px;
+  height: 130px;
+  display: block;
+  margin: auto;
+  font-size: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  font-size: 15px;
-  padding: 5px 10px;
-}
-.lang-sel, .res-sel {
-  border: none;
-  background: none;
-  color: #fff;
-  outline: none;
-}
-.lang-sel option, .res-sel option {
-  background: #222;
-  color: #fff;
-}
-.ajax, .fetch, .success-2, .error, .error-2, .error-3 {
-  display: none;
+  background: #fff;
+  border-radius: 50%;
+  color: lightblue;
+  font-weight: 500;
 }

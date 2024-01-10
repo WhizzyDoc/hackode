@@ -10,7 +10,6 @@ function getProfile() {
             $('#fname').val(p.first_name)
             $('#lname').val(p.last_name)
             $('#email').val(p.email)
-            $('#api_key').val(p.api_token)
             if(p.image) {
                 $('.comp_image').attr('src', `${base_image_url}${p.image}`)
             }
