@@ -1,7 +1,5 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 /* custom scroll bar */
 ::-webkit-scrollbar {width: 0px !important;}
@@ -526,7 +524,7 @@ textarea {resize:none;}
 .tabs .slider{
   position: absolute;
   height: 100%;
-  width: 33.33333%;
+  width: 50%;
   left: 0;
   bottom: 0;
   z-index: 0;
@@ -534,26 +532,20 @@ textarea {resize:none;}
   border-bottom: 5px solid navy;
   transition: all 0.3s ease;
 }
-input[type="radio"]{
+.wrapper input[type="radio"]{
   display: none;
 }
 #blog:checked ~ .tabs .slider{
-  left: 33.33333%;
-}
-#code:checked ~ .tabs .slider{
-  left: 66.66667%;
+  left: 50%;
 }
 section .content{
   display: none;
   background: #fff;
-  padding-top: 30px;
+  padding-top: 0px;
   text-align: left;
 }
 #home:checked ~ section .content-1,
-#blog:checked ~ section .content-2,
-#code:checked ~ section .content-3,
-#help:checked ~ section .content-4,
-#about:checked ~ section .content-5{
+#blog:checked ~ section .content-2{
   display: block;
 }
 section .content .title{
@@ -739,4 +731,90 @@ text-align: justify;
   border-radius: 50%;
   color: lightblue;
   font-weight: 500;
+}
+.table tbody td:nth-child(1) {
+  width: calc(100% - 30px);
+}
+.table tbody td:nth-child(2) {
+  width: 30px;
+}
+.table {
+  border: none !important;
+}
+.table tbody tr:hover {
+  background: lightblue;
+}
+
+/* Quiz carousel */
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  width: auto;
+  border: none;
+  padding: 15px 20px;
+  background: #a0b5f0;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 10px;
+  transition: 0.6s ease;
+  user-select: none;
+}
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 3px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  background: #dbcece;
+  color: #000 !important;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.dot.active {
+  background: #000;
+  color: #fff !important;
+}
+
+/* Fading animation */
+.fadem {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fadem;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fadem {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fadem {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.form-check {
+  margin-bottom: 10px !important;
+}
+.form-check-label {
+  font-size: 18px !important;
 }

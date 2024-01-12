@@ -41,6 +41,7 @@ function register() {
     })
     .catch(err => {
         console.log(err);
+        swal("Error", "Please check your internet connection", "error")
         $('.register-btn').html('Create Account').attr('disabled', false)
     })
 }
@@ -81,6 +82,7 @@ function authenticate() {
     })
     .catch(err => {
         console.log(err);
+        swal("Error", "Please check your internet connection", "error")
         $('.login-btn').html('Log In').attr('disabled', false);
     })
 }
@@ -114,6 +116,7 @@ function logout() {
     })
     .catch(err => {
         console.log(err);
+        swal("Error", "Please check your internet connection", "error")
         swal('Error', "Error occured", "error")
     })
 }
@@ -146,6 +149,7 @@ function forgotPassword() {
     })
     .catch(err => {
         console.log(err);
+        swal("Error", "Please check your internet connection", "error")
         $('.forgot-btn').html('Reset Password').attr('disabled', false);
     })
 }

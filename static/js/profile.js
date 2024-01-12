@@ -18,7 +18,10 @@ function getProfile() {
             swal('Error', data['message'], 'error')
         }
     })
-    .catch(err => {console.log(err)})
+    .catch(err => {
+        console.log(err);
+        swal("Error", "Please check your internet connection", "error")
+    })
 }
 getProfile();
 
@@ -76,6 +79,7 @@ function saveProfile() {
     })
     .catch(err => {
         console.log(err);
+        swal("Error", "Please check your internet connection", "error")
         $('.comp-btn').html('Save Profile').attr('disabled', false)
     })
 }
