@@ -1,5 +1,5 @@
 function changePassword() {
-    let url = `${base_url}author/change_password/`;
+    let url = `${base_url}students/change_password/`;
     let old_pass = $('#old_pass').val()
     let new_pass = $('#new_pass').val()
     const formData = new FormData();

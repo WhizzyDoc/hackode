@@ -103,6 +103,7 @@ function getProject(id) {
     .then(data => {
       //console.log(data);
       $('.pro-detail').empty()
+      $('.comment-con').empty()
       if(data['status'] == 'success') {
         d = data.data
         $('.submit-form')[0].reset();
@@ -133,6 +134,11 @@ function getProject(id) {
             s = data.submission;
             $('#repo').val(s.source_code)
             $('#live').val(s.live_url)
+            if(s.comment !== undefined && s.comment !== '') {
+                var temp = `<h3 class="w-text-blue" style="text-align:center">Comment</h3>
+                <div>${s.comment}</div>`;
+                $('.comment-con').html(temp)
+            }
         }
       }
       else if(data['status'] == 'error') {
