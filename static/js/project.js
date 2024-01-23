@@ -171,6 +171,7 @@ function submitProject(id) {
         console.log(data)
         swal(data.status, data.message, data.status)
         $('.submit-form-btn').html(`Submit Project`).attr('disabled', false)
+        getProjects()
     })
     .catch(err => {
         console.log(err);
