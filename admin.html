@@ -10,10 +10,6 @@
         Hackode
       </h3>
       <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
-      <a href="#" class="dash-act"><i class="fa fa-th-large"></i> Dashboard</a>
-      <a href="#profile" class="user-act"><i class="fa fa-user"></i> Profile</a>
-      <a href="#courses" class="course-act"><i class="fa fa-laptop"></i> Courses</a>
-      <a href="#projects" class="pro-act"><i class="fa fa-code"></i> Projects</a>
       <a class="accordion set-act"><i class="fa fa-gear"></i> Settings</a>
       <ul class="panel">
         <li><a href="#change_password" class="pass-act"><i class="fa fa-key"></i> Password</a></li>
@@ -21,6 +17,23 @@
       </ul>
       <a href="#" class="w-text-red logout-btn"><i class="fa fa-power-off"></i> Logout</a>
     </div>
+
+    <div class="bottom-nav w-card-8">
+      <div class="dash-act"><a href="#"><i class="fa fa-th-large"></i><br>Home</a></div>
+      <div class="course-act"><a href="#courses"><i class="fa fa-laptop"></i><br>Courses</a></div>
+      <div class="pro-act"><a href="#projects"><i class="fa fa-briefcase"></i><br>Projects</a></div>
+      <div class="user-act note-act pass-act acc-act dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-smile-o"></i><br>Me</a>
+        <ul class="dropdown-menu w-card-16 w-left">
+            <li><a class="user-act dropdown-item w-text-black w-padding" href="#profile"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a class="pass-act dropdown-item w-text-black w-padding" href="#change_password"><i class="fa fa-lock"></i> Change Password</a></li>
+            <li><a class="acc-act dropdown-item w-text-black w-padding" href="#account_settings"><i class="fa fa-gear"></i> Account Settings</a></li>
+            <li><a class="note-act dropdown-item w-text-black w-padding" href="#notifications"><i class="fa fa-bell"></i> Notifications</a></li>
+        </ul>
+    </div>
+      <div><a href="#" class="logout-btn"><i class="fa fa-power-off"></i><br>Logout</a></div>
+      
+  </div>
     <script src="./static/js/login.js"></script>
     <script>
       
@@ -53,25 +66,21 @@ for (i = 0; i < acc.length; i++) {
 
   <!-- header -->
   <template id="header">
-    <header>
-      
-      <form class="w-margin-right" id="search-form">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search Anything" id="search">
-          <div class="input-group-append">
-            <span class="input-group-text" style="background:none;"><i class="fa fa-search"></i></span>
-          </div>
-        </div>
+    
+    <header class="">
+      <form class="w-margin-right" id="">
+        <h3 class="w-bold-xx w-text-blue">
+          <i class="fa fa-code"></i>&nbsp;
+          H<small>A</small>C<small>K</small>O<small>D</small>E
+        </h3>
       </form>
       <div class="side-content">
         <div class="side-content admin-pro w-margin-right">
-          <img src="./static/image/avatar.png" alt="" class="admin-img" />
-          <div class="h5">
-            <span class="w-bold-x"><?print: localStorage.names?></span><br>
-            <small class="w-bold">Student</small>
-          </div>
+          <a href="#profile">
+            <img src="./static/image/avatar.png" alt="" class="admin-img" />
+          </a>
         </div>
-        <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
+        <a class="notification" href="#notifications"><i class="fa fa-bell"></i></a>
       </div>
     </header>
     
@@ -127,7 +136,6 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <?use-template: "header"?>
           <h2 class="w-bold-x w-center">Student Profile</h2>
           <form class="row comp-form" id="comp-form">
 
@@ -170,13 +178,11 @@ for (i = 0; i < acc.length; i++) {
   </template>
 
 
-
   <!-- for courses -->
   <template id="courses">
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <?use-template: "header"?>
           <h2 class="w-bold-x w-center">Courses</h2>
           <div class="w-flex w-flex-wrap w-flex-around w-align-center course-row">
             <div class="loader">
@@ -293,7 +299,6 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <?use-template: "header"?>
           <h2 class="w-bold-x w-center">Projects</h2>
           <div class="w-flex w-flex-around w-align-center">
             <div class="h5 w-bold-x" style="min-width:80px"><i class="fa fa-filter"></i> Filter</div>
@@ -397,7 +402,6 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <?use-template: "header"?>
           <h2 class="w-bold-x w-center">Change Password</h2>
           <form class="row comp-form" id="change-pass-form">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
@@ -448,7 +452,6 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <?use-template: "header"?>
           <h2 class="w-bold-x w-center">Account Settings</h2>
           
         </main>
@@ -461,6 +464,7 @@ for (i = 0; i < acc.length; i++) {
 
   <!-- error 404 page -->
   <template id="404">
+    <?use-template: "sidenav"?>
     <?include: "templates/_parts/404.html"?><?end?>
 </template>
 
@@ -502,7 +506,7 @@ for (i = 0; i < acc.length; i++) {
 <script src="./static/module/swif.js"></script>
 <script src="./dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
+<script src="./static/js/popper.min.js"></script>
 <script src="./static/js/bootstrap.min.js"></script>
 <script src="./static/js/sweetalert.min.js"></script>
 <script src="./dist/semantic.min.js"></script>
