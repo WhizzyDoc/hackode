@@ -1,6 +1,48 @@
 
-function getCourses() {
-    let url = `${base_url}courses/get_courses/`;
+function getSkills() {
+    let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+      console.log(data);
+      $('.skill-row').empty()
+      if(data['status'] == 'success') {
+        if(data.data) {
+            d = data.data
+            for(var i in d) {
+                var temp = `
+                <div class="s-item" data-id="${d[i].id}" data-name="${d[i].title}">
+                    <img src="${base_image_url}${d[i].image}" alt="">
+                    <div class="s-title">${d[i].title}</div>
+                </div>`;
+                $('.skill-row').append(temp)
+            }
+            $('.s-item').click(function() {
+                let id = $(this).data('id')
+                let name = $(this).data('name')
+                $('.course-title').html(name)
+                $('.cou_c_con').addClass('active')
+                getSkillCourses(id)
+            })
+        }
+        else {
+            $('.skill-row').append(data.message)
+        }
+      }
+      else if(data['status'] == 'error') {
+        $('.skill-row').append(data.message)
+      }
+    })
+    .catch(err => {
+        console.log(err)
+        swal("Error", "Please check your internet connection", "error")
+        getSkills()
+    })
+  }
+  getSkills()
+
+  function getSkillCourses(id) {
+    let url = `${base_url}skills/get_skill_courses/?skill_id=${id}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -37,9 +79,10 @@ function getCourses() {
     .catch(err => {
         console.log(err)
         swal("Error", "Please check your internet connection", "error")
+        getSkillCourses(id)
     })
   }
-  getCourses();
+  
 
   function getQuizzes(id) {
     let url = `${base_url}courses/get_quizzes/?course_id=${id}`;

@@ -251,6 +251,24 @@ header {
     border-radius: 50%;
     margin-right: 5px;
 }
+.s-item {
+  width: 100%;
+  padding: 5px;
+  position: relative;
+}
+.s-item img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+}
+.s-item .s-title {
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  padding: 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
 
 .panel {
   padding: 0 18px;

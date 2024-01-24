@@ -5,18 +5,6 @@
   
   <!-- navigation bar -->
   <template id="sidenav">
-    <div id="mySidenav" class="sidenav">
-      <h3 class="w-bold-x site-title">
-        Hackode
-      </h3>
-      <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
-      <a class="accordion set-act"><i class="fa fa-gear"></i> Settings</a>
-      <ul class="panel">
-        <li><a href="#change_password" class="pass-act"><i class="fa fa-key"></i> Password</a></li>
-        <li><a href="#account_settings" class="acc-act"><i class="fa fa-lock"></i> Account Settings</a></li>
-      </ul>
-      <a href="#" class="w-text-red logout-btn"><i class="fa fa-power-off"></i> Logout</a>
-    </div>
 
     <div class="bottom-nav w-card-8">
       <div class="dash-act"><a href="#"><i class="fa fa-th-large"></i><br>Home</a></div>
@@ -29,9 +17,10 @@
             <li><a class="pass-act dropdown-item w-text-black w-padding" href="#change_password"><i class="fa fa-lock"></i> Change Password</a></li>
             <li><a class="acc-act dropdown-item w-text-black w-padding" href="#account_settings"><i class="fa fa-gear"></i> Account Settings</a></li>
             <li><a class="note-act dropdown-item w-text-black w-padding" href="#notifications"><i class="fa fa-bell"></i> Notifications</a></li>
+            <li><a class="logout-btn dropdown-item w-text-black w-padding" href="#"><i class="fa fa-power-off"></i> Logout</a></li>
         </ul>
     </div>
-      <div><a href="#" class="logout-btn"><i class="fa fa-power-off"></i><br>Logout</a></div>
+      <div class="skill-act"><a href="#skills"><i class="fa fa-globe"></i><br>Explore</a></div>
       
   </div>
     <script src="./static/js/login.js"></script>
@@ -177,14 +166,13 @@ for (i = 0; i < acc.length; i++) {
     </script>
   </template>
 
-
   <!-- for courses -->
-  <template id="courses">
+  <template id="skills">
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">Courses</h2>
-          <div class="w-flex w-flex-wrap w-flex-around w-align-center course-row">
+          <h2 class="w-bold-x w-center">Our Courses</h2>
+          <div class="skill-row">
             <div class="loader">
               <div class="ball"></div>
               <div class="ball"></div>
@@ -193,6 +181,43 @@ for (i = 0; i < acc.length; i++) {
             </div>
           </div>
         </main>
+        <script src="./static/js/skill.js"></script>
+        <script>
+          $('.skill-act').addClass('active');
+        </script>
+  </template>
+
+  <!-- for courses -->
+  <template id="courses">
+    <?use-template: "sidenav"?>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <main class="">
+          <h2 class="w-bold-x w-center">My Courses</h2>
+          <div class="skill-row">
+            <div class="loader">
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+              <div class="ball"></div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Material list -->
+        <div class="cou_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn4"><i class="fa fa-arrow-left"></i></button>
+            <h2 class="w-bold-x w-center">Courses</h2>
+            <div class="w-flex w-flex-wrap w-flex-around w-align-center course-row">
+              <div class="loader">
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="sel_c_con side-con">
           <div class="mb-2">
@@ -290,6 +315,9 @@ for (i = 0; i < acc.length; i++) {
       });
       $('.c_back_btn3').click(function() {
         $('.mat_c_con').removeClass('active')
+      });
+      $('.c_back_btn4').click(function() {
+        $('.cou_c_con').removeClass('active')
       });
     </script>
   </template>
@@ -478,6 +506,9 @@ for (i = 0; i < acc.length; i++) {
 </template>
 <template route="/courses">
   <?use-template: "courses"?>
+</template>
+<template route="/skills">
+  <?use-template: "skills"?>
 </template>
 <template route="/projects">
   <?use-template: "projects"?>
