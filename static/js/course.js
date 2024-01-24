@@ -66,6 +66,7 @@ function getSkills() {
                 $('.sel_c_con').addClass('active')
                 getQuizzes(id)
                 getMaterials(id)
+                getVideos(id)
             })
         }
         else {
@@ -82,7 +83,6 @@ function getSkills() {
         getSkillCourses(id)
     })
   }
-  
 
   function getQuizzes(id) {
     let url = `${base_url}courses/get_quizzes/?course_id=${id}`;
@@ -138,6 +138,54 @@ function getSkills() {
     })
     .catch(err => {
         console.log(err)
+        swal("Error", "Please check your internet connection", "error")
+    })
+  }
+
+  function getVideos(id) {
+    let url = `${base_url}courses/get_videos/?course_id=${id}`;
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+      //console.log(data);
+      $('.vid-row').empty()
+      if(data['status'] == 'success') {
+        if(data.data) {
+            d = data.data
+            for(var i in d) {
+                let icon = `<i class="w-text-gray fa fa-video-camera"></i>`;
+                var temp = `
+                <tr class="q-item vid-item" data-id="${d[i].id}">
+                    <td>${icon}&nbsp;&nbsp;${d[i].title}<td>
+                    <td><i class="fa fa-chevron-right"></i></td>
+                </tr>`;
+                $('.vid-row').append(temp)
+            }
+            $('.vid-item').click(function() {
+                let vid = $(this).data('id')
+                $('.vid_c_con').addClass('active')
+                getVideo(vid)
+            })
+        }
+        else {
+            let temp = `
+            <tr>
+                <td colspan="2">${data.message}</td>
+            </tr>`
+            $('.vid-row').append(temp)
+        }
+      }
+      else if(data['status'] == 'error') {
+        let temp = `
+            <tr>
+                <td colspan="2">${data.message}</td>
+            </tr>`
+            $('.vid-row').append(temp)
+      }
+    })
+    .catch(err => {
+        console.log(err)
+        getVideos(id)
         swal("Error", "Please check your internet connection", "error")
     })
   }
@@ -297,6 +345,39 @@ function getSkills() {
         swal("Error", "Please check your internet connection", "error")
     })
   }
+
+  function getVideo(id) {
+    let url = `${base_url}courses/get_video/?video_id=${id}`;
+    let con = `<div class="loader">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>`
+    $('.vid-content').html(con)
+    $('.vid-title').empty()
+    $('.course-vid').attr('src', '')
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+        $('.vid-content').empty()
+        console.log(data);
+      if(data['status'] == 'success') {
+        d = data.data
+        $('.vid-title').html(d.title);
+        $('.course-vid').attr('src', d.link)
+        $('.vid-content').html(d.description);
+      }
+      else if(data['status'] == 'error') {
+        swal('Error', data.message, 'error')
+      }
+    })
+    .catch(err => {
+        console.log(err)
+        swal("Error", "Please check your internet connection", "error")
+    })
+  }
+
 
   function submitQuiz() {
     let marked_answers = []

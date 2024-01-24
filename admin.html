@@ -226,9 +226,11 @@ for (i = 0; i < acc.length; i++) {
 
             <div class="wrapper">
               <input type="radio" name="slider" checked id="home">
+              <input type="radio" name="slider" id="code">
               <input type="radio" name="slider" id="blog">
               <div class="tabs">
-                <label for="home" class="home"><i class="fa fa-book"></i>Materials</label>
+                <label for="home" class="home"><i class="fa fa-book"></i>Notes</label>
+                <label for="code" class="code"><i class="fa fa-video-camera"></i>Videos</label>
                 <label for="blog" class="blog"><i class="fa fa-question"></i>Quizzes</label>
                 <div class="slider"></div>
               </div>
@@ -251,6 +253,23 @@ for (i = 0; i < acc.length; i++) {
                 </div>
 
                 <div class="content content-2">
+                  <table class="table">
+                    <tbody class="vid-row">
+                      <tr>
+                        <td colspan="2">
+                          <div class="loader">
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="content content-3">
                   <table class="table">
                     <tbody class="quiz-row">
                       <tr>
@@ -304,6 +323,16 @@ for (i = 0; i < acc.length; i++) {
           </div>
         </div>
 
+        <!-- Video con -->
+        <div class="vid_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn5"><i class="fa fa-arrow-left"></i></button>
+            <video src="" class="course-vid" controls></video>
+            <h3><span class="vid-title"></span></h3>
+            <div class="vid-content"></div>
+          </div>
+        </div>
+
         <script src="./static/js/course.js"></script>
     <script>
       $('.course-act').addClass('active');
@@ -318,6 +347,9 @@ for (i = 0; i < acc.length; i++) {
       });
       $('.c_back_btn4').click(function() {
         $('.cou_c_con').removeClass('active')
+      });
+      $('.c_back_btn5').click(function() {
+        $('.vid_c_con').removeClass('active')
       });
     </script>
   </template>
@@ -356,9 +388,11 @@ for (i = 0; i < acc.length; i++) {
 
             <div class="wrapper">
               <input type="radio" name="slider" checked id="home">
+              <input type="radio" name="slider" id="code">
               <input type="radio" name="slider" id="blog">
               <div class="tabs">
-                <label for="home" class="home"><i class="fa fa-briefcase"></i>Details</label>
+                <label for="home" class="home"><i class="fa fa-briefcase"></i>Info</label>
+                <label for="code" class="code"><i class="fa fa-trophy"></i>Rankings</label>
                 <label for="blog" class="blog"><i class="fa fa-book"></i>Submission</label>
                 <div class="slider"></div>
               </div>
@@ -373,6 +407,10 @@ for (i = 0; i < acc.length; i++) {
                 </div>
 
                 <div class="content content-2">
+
+                </div>
+
+                <div class="content content-3">
                   <form class="submit-form mt-2" data-id="">
                     <div class="form-group">
                       <label for="repo">Link to Source Code/Repository:</label>

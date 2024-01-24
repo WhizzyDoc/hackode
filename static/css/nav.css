@@ -258,8 +258,7 @@ header {
 }
 .s-item img {
   width: 100%;
-  height: auto;
-  max-height: 300px;
+  height: 200px;
 }
 .s-item .s-title {
   width: 100%;
@@ -267,7 +266,7 @@ header {
   padding: 10px;
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .panel {
@@ -585,7 +584,7 @@ textarea {resize:none;}
 .tabs .slider{
   position: absolute;
   height: 100%;
-  width: 50%;
+  width: 33.33333%;
   left: 0;
   bottom: 0;
   z-index: 0;
@@ -596,8 +595,11 @@ textarea {resize:none;}
 .wrapper input[type="radio"]{
   display: none;
 }
+#code:checked ~ .tabs .slider{
+  left: 33.33333%;
+}
 #blog:checked ~ .tabs .slider{
-  left: 50%;
+  left: 66.66667%;
 }
 section .content{
   display: none;
@@ -606,7 +608,8 @@ section .content{
   text-align: left;
 }
 #home:checked ~ section .content-1,
-#blog:checked ~ section .content-2{
+#code:checked ~ section .content-2,
+#blog:checked ~ section .content-3{
   display: block;
 }
 section .content .title{
@@ -878,4 +881,10 @@ text-align: justify;
 }
 .form-check-label {
   font-size: 18px !important;
+}
+
+.course-vid {
+  width: 100%;
+  height: 300px;
+  margin-top: 15px !important;
 }

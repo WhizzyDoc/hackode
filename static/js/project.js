@@ -1,5 +1,5 @@
-function getCourses() {
-    let url = `${base_url}courses/get_courses/`;
+function getSkills() {
+    let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -27,7 +27,7 @@ function getCourses() {
     })
     .catch(err => {console.log(err)})
   }
-  getCourses();
+  getSkills();
 
 function getProjects() {
     let filter = ''
@@ -36,7 +36,7 @@ function getProjects() {
         c_filter = ''
     }
     if(c_filter !== '') {
-        filter = `&course_id=${c_filter}`
+        filter = `&skill_id=${c_filter}`
     }
     let url = `${base_url}projects/get_projects/?api_token=${localStorage.api_key}${filter}`;
     fetch(url)
