@@ -268,6 +268,36 @@ header {
   font-weight: 700;
   font-size: 17px;
 }
+.sk-item {
+  width: 100%;
+  padding: 5px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.sk-item:hover {
+  background: rgba(0,0,0,0.05)
+}
+.sk-item img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+.sk-title {
+  font-size: 15px;
+  color: rgb(19, 150, 194);
+  font-weight: 800;
+}
+.sk-num {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 12px;
+}
+.sk-num > div {
+  margin-right: 5px;
+}
 
 .panel {
   padding: 0 18px;
@@ -887,4 +917,5 @@ text-align: justify;
   width: 100%;
   height: 300px;
   margin-top: 15px !important;
+  background: #000;
 }

@@ -10,9 +10,16 @@ function getSkills() {
             d = data.data
             for(var i in d) {
                 var temp = `
-                <div class="s-item" data-id="${d[i].id}" data-name="${d[i].title}">
+                <div class="sk-item" data-id="${d[i].id}" data-name="${d[i].title}">
                     <img src="${base_image_url}${d[i].image}" alt="">
-                    <div class="s-title">${d[i].title}</div>
+                    <div class="sk-des">
+                        <div class="sk-title">${d[i].title}</div>
+                        <div class="w-text-gray sk-num">
+                            <div><i class="fa fa-dollar"></i>${digify(d[i].price)}</div>
+                            <div><i class="fa fa-book"></i> ${data.c_count[i]} courses</div>
+                            <div><i class="fa fa-calendar"></i> ${d[i].duration}</div>
+                        </div>
+                    </div>
                 </div>`;
                 $('.skill-row').append(temp)
             }
