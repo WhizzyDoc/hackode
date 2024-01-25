@@ -181,9 +181,21 @@ for (i = 0; i < acc.length; i++) {
             </div>
           </div>
         </main>
+
+        <!-- Material list -->
+        <div class="ski_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn"><i class="fa fa-arrow-left"></i></button>
+            <h3 style="text-align:center"><span class="skill-title w-text-blue w-bold-x"></span></h3>
+            <div class="skill-content"></div>
+          </div>
+        </div>
         <script src="./static/js/skill.js"></script>
         <script>
           $('.skill-act').addClass('active');
+          $('.c_back_btn').click(function() {
+        $('.ski_c_con').removeClass('active')
+      });
         </script>
   </template>
 
