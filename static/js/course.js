@@ -33,7 +33,8 @@ function getSkills() {
             })
         }
         else {
-            $('.skill-row').append(data.message)
+            var temp = `<div>${data.message}. <a class="w-text-red" href="#skills">Explore our courses</a></div>`
+            $('.skill-row').append(temp)
         }
       }
       else if(data['status'] == 'error') {
