@@ -190,11 +190,56 @@ for (i = 0; i < acc.length; i++) {
             <div class="skill-content"></div>
           </div>
         </div>
+
+        <div class="pay_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn2"><i class="fa fa-arrow-left"></i></button>
+            <div class="payment-content">
+              <h3 style="text-align:center"><span class="w-text-blue w-bold-x">Payment Details</span></h3>
+              <form  id="payment-form">
+                <div class="w-flex w-flex-between w-align-center">
+                  <h6 class="w-bold-xx">Payer Name</h6>
+                  <h6 class="w-text-gray" id="p_name"></h6>
+                </div>
+                <div class="w-flex w-flex-between w-align-center">
+                  <h6 class="w-bold-xx">Payer Email</h6>
+                  <h6 class="w-text-gray" id="p_email"></h6>
+                </div>
+                <div class="w-flex w-flex-between w-align-center">
+                  <h6 class="w-bold-xx">Amount</h6>
+                  <h6 class="w-text-gray" id="p_amt"></h6>
+                </div>
+                <div class="w-flex w-flex-between w-align-center">
+                  <h6 class="w-bold-xx">Payment For</h6>
+                  <h6 class="w-text-gray" id="p_des"></h6>
+                </div>
+                <div class="w-flex w-flex-between w-align-center">
+                  <h6 class="w-bold-xx">Reference ID</h6>
+                  <h6 class="w-text-gray" id="p_ref"></h6>
+                </div>
+                <input type="hidden" id="pk" value="" />
+                <input type="hidden" id="ref_id" value="" />
+                <input type="hidden" id="pay_amt" value="" />
+                <input type="hidden" id="pay_email" value="" />
+                <button type="submit" class="btn btn-success pay-btn btn-block">Proceed with Payment</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        
         <script src="./static/js/skill.js"></script>
         <script>
           $('.skill-act').addClass('active');
+          $('#payment-form').submit(function(e) {
+            e.preventDefault()
+            payWithPaystack()
+          })
           $('.c_back_btn').click(function() {
         $('.ski_c_con').removeClass('active')
+      });
+      $('.c_back_btn2').click(function() {
+        $('.pay_c_con').removeClass('active')
       });
         </script>
   </template>
@@ -588,6 +633,7 @@ for (i = 0; i < acc.length; i++) {
 <script src="./dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="./static/js/popper.min.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 <script src="./static/js/bootstrap.min.js"></script>
 <script src="./static/js/sweetalert.min.js"></script>
 <script src="./dist/semantic.min.js"></script>
