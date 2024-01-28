@@ -1,3 +1,4 @@
+/*
 function getSkills() {
     let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
     fetch(url)
@@ -26,6 +27,54 @@ function getSkills() {
       }
     })
     .catch(err => {console.log(err)})
+  }
+*/
+
+  function fetchSkills() {
+    const storedData = sessionStorage.user_skills;
+    if(storedData) {
+        const storedTime = sessionStorage.user_skills_time;
+        if(new Date().getTime() - storedTime < 5*60*1000) {
+            return JSON.parse(storedData)
+        }
+    }
+    let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+      //console.log(data);
+      sessionStorage.setItem('user_skills', JSON.stringify(data));
+      sessionStorage.setItem('user_skills_time', new Date().getTime());
+      getSkills()
+    })
+    .catch(err => {
+        console.log(err)
+        getSkills();
+    })
+  }
+
+  function getSkills() {
+    const data = fetchSkills();
+    $('.course-filter').empty()
+      $('.course-filter').append(`<option selected value="">All Courses</option>`)
+      if(data['status'] == 'success') {
+        if(data.data) {
+            d = data.data
+            for(var i in d) {
+                var temp = `
+                <option value="${d[i].id}">
+                    ${d[i].title}
+                </option>`;
+                $('.course-filter').append(temp)
+            }
+        }
+        else {
+            $('.course-filter').append(data.message)
+        }
+      }
+      else if(data['status'] == 'error') {
+        $('.course-filter').append(data.message)
+      }
   }
   getSkills();
 
