@@ -604,8 +604,8 @@ textarea {resize:none;}
 #home:checked ~ .tabs label.home,
 #blog:checked ~ .tabs label.blog,
 #code:checked ~ .tabs label.code,
-#help:checked ~ .tabs label.help,
-  #about:checked ~ .tabs label.about{
+#co:checked ~ .tabs label.co,
+#pr:checked ~ .tabs label.pr{
   color: navy;
 }
 .tabs label i{
@@ -622,6 +622,9 @@ textarea {resize:none;}
   border-bottom: 5px solid navy;
   transition: all 0.3s ease;
 }
+.tabs .slider.cou {
+  width: 50%
+}
 .wrapper input[type="radio"]{
   display: none;
 }
@@ -631,6 +634,9 @@ textarea {resize:none;}
 #blog:checked ~ .tabs .slider{
   left: 66.66667%;
 }
+#pr:checked ~ .tabs .slider{
+  left: 50%;
+}
 section .content{
   display: none;
   background: #fff;
@@ -638,8 +644,10 @@ section .content{
   text-align: left;
 }
 #home:checked ~ section .content-1,
+#co:checked ~ section .content-1,
 #code:checked ~ section .content-2,
-#blog:checked ~ section .content-3{
+#blog:checked ~ section .content-3,
+#pr:checked ~ section .content-2{
   display: block;
 }
 section .content .title{

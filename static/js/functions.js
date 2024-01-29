@@ -11,14 +11,14 @@ function openNav() {
     $("main").toggleClass('active');
   }
 
-
-function showDP() {
-  if(localStorage.dp) {
-    //console.log(localStorage.dp)
-    $('.admin-img').attr('src', `${base_image_url}${localStorage.dp}`)
+  function showDP() {
+    if(localStorage.dp) {
+      //console.log(localStorage.dp)
+      $('.admin-img').attr('src', `${base_image_url}${localStorage.dp}`)
+    }
   }
-}
-showDP();
+  showDP();
+
 
 function digify(n) {
   a = Number(n)

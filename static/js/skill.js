@@ -120,11 +120,15 @@ function fetchSkills() {
             <div class="ball"></div>
             <div class="ball"></div>
         </div>`
-    $('.skill-content').html(con)
+    $('.skill-detail').html(con)
+    $('.skill-courses').html(con)
+    $('.skill-reviews').html(con)
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-        $('.skill-content').empty()
+        $('.skill-detail').empty()
+        $('.skill-courses').empty()
+        $('.skill-reviews').empty()
       //console.log(data);
       if(data['status'] == 'success') {
         d = data.data
@@ -135,7 +139,7 @@ function fetchSkills() {
         <div class="w-bold-x h5"><span class="w-text-blue"><i class="fa fa-dollar"></i> Price: </span>N${digify(d.price)}</div>
         <button data-id="${d.id}" class="enroll-btn w-margin-top btn btn-success btn-block w-padding">Enroll Now</button>
         `
-        $('.skill-content').html(temp);
+        $('.skill-detail').html(temp);
 
         $('.enroll-btn').click(function() {
             let bid = $(this).data('id')

@@ -9,7 +9,6 @@
     <div class="bottom-nav w-card-8">
       <div class="dash-act"><a href="#"><i class="fa fa-th-large"></i><br>Home</a></div>
       <div class="course-act"><a href="#courses"><i class="fa fa-laptop"></i><br>Courses</a></div>
-      <div class="pro-act"><a href="#projects"><i class="fa fa-briefcase"></i><br>Projects</a></div>
       <div class="user-act note-act pass-act acc-act dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-smile-o"></i><br>Me</a>
         <ul class="dropdown-menu w-card-16 w-left">
@@ -21,6 +20,7 @@
         </ul>
     </div>
       <div class="skill-act"><a href="#skills"><i class="fa fa-globe"></i><br>Explore</a></div>
+      <div class="pro-act"><a href="#community"><i class="fa fa-group"></i><br>Community</a></div>
       
   </div>
     <script src="./static/js/login.js"></script>
@@ -59,8 +59,8 @@ for (i = 0; i < acc.length; i++) {
     <header class="">
       <form class="w-margin-right" id="">
         <h3 class="w-bold-xx w-text-blue">
-          <i class="fa fa-code"></i>&nbsp;
-          H<small>A</small>C<small>K</small>O<small>D</small>E
+          <img src="./static/image/rlogo_bg.png" alt="" style="width:40px;height:40px;">
+          RIGLEARN
         </h3>
       </form>
       <div class="side-content">
@@ -72,6 +72,16 @@ for (i = 0; i < acc.length; i++) {
         <a class="notification" href="#notifications"><i class="fa fa-bell"></i></a>
       </div>
     </header>
+    
+    <script>
+      function showDP() {
+        if(localStorage.dp) {
+          //console.log(localStorage.dp)
+          $('.admin-img').attr('src', `${base_image_url}${localStorage.dp}`)
+        }
+      }
+      showDP();
+    </script>
     
   </template>
 
@@ -172,6 +182,12 @@ for (i = 0; i < acc.length; i++) {
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
           <h2 class="w-bold-x w-center">Our Courses</h2>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search for courses">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+          </div>
           <div class="skill-row">
             <div class="loader">
               <div class="ball"></div>
@@ -187,7 +203,29 @@ for (i = 0; i < acc.length; i++) {
           <div class="mb-2">
             <button class="add_emp_btn c_back_btn"><i class="fa fa-arrow-left"></i></button>
             <h3 style="text-align:center"><span class="skill-title w-text-blue w-bold-x"></span></h3>
-            <div class="skill-content"></div>
+
+            <div class="wrapper">
+              <input type="radio" name="slider" checked id="home">
+              <input type="radio" name="slider" id="code">
+              <input type="radio" name="slider" id="blog">
+              <div class="tabs">
+                <label for="home" class="home"><i class="fa fa-info"></i>Details</label>
+                <label for="code" class="code"><i class="fa fa-desktop"></i>Courses</label>
+                <label for="blog" class="blog"><i class="fa fa-comment"></i>Reviews</label>
+                <div class="slider"></div>
+              </div>
+              <section>
+                <div class="skill-detail content w-margin-bottom w-padding-top content-1">
+                </div>
+
+                <div class="skill-courses content w-margin-bottom w-padding-top content-2">
+                </div>
+
+                <div class="skill-reviews content w-margin-bottom w-padding-top content-3">
+                </div>
+              </section>
+            </div>
+
           </div>
         </div>
 
@@ -264,16 +302,101 @@ for (i = 0; i < acc.length; i++) {
         <div class="cou_c_con side-con">
           <div class="mb-2">
             <button class="add_emp_btn c_back_btn4"><i class="fa fa-arrow-left"></i></button>
-            <h2 class="w-bold-x w-center">Courses</h2>
-            <div class="w-flex w-flex-wrap w-flex-around w-align-center course-row">
-              <div class="loader">
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
+
+            <div class="wrapper">
+              <input type="radio" name="slider2" checked id="co">
+              <input type="radio" name="slider2" id="pr">
+              <div class="tabs">
+                <label for="co" class="co"><i class="fa fa-book"></i>Courses</label>
+                <label for="pr" class="pr"><i class="fa fa-briefcase"></i>Projects</label>
+                <div class="slider cou"></div>
               </div>
+              <section>
+                <div class="content content-1">
+                  <div class="w-flex w-flex-wrap w-flex-around w-align-center course-row">
+                    <div class="loader">
+                      <div class="ball"></div>
+                      <div class="ball"></div>
+                      <div class="ball"></div>
+                      <div class="ball"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="content content-2">
+                  <table class="table">
+                    <tbody class="pro-row">
+                      <tr>
+                        <td colspan="2">
+                          <div class="loader">
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                            <div class="ball"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
             </div>
+
+            
+
           </div>
+        </div>
+
+        <div class="pro_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn6"><i class="fa fa-arrow-left"></i></button>
+
+            <div class="wrapper">
+              <input type="radio" name="slider3" checked id="home">
+              <input type="radio" name="slider3" id="code">
+              <input type="radio" name="slider3" id="blog">
+              <div class="tabs">
+                <label for="home" class="home"><i class="fa fa-briefcase"></i>Info</label>
+                <label for="code" class="code"><i class="fa fa-trophy"></i>Rankings</label>
+                <label for="blog" class="blog"><i class="fa fa-book"></i>Submission</label>
+                <div class="slider"></div>
+              </div>
+              <section>
+                <div class="pro-detail w-padding-top content content-1">
+                  <div class="loader">
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                  </div>
+                </div>
+
+                <div class="content content-2">
+
+                </div>
+
+                <div class="content content-3">
+                  <form class="submit-form mt-2" data-id="">
+                    <div class="form-group">
+                      <label for="repo">Link to Source Code/Repository:</label>
+                      <input type="url" class="form-control" id="repo" value="">
+                    </div>
+                    <div class="form-group">
+                      <label for="live">Link to Live Project:</label>
+                      <input type="url" class="form-control" id="live" value="">
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="submit-form-btn btn btn-primary btn-block">Submit Project</button>
+                    </div>
+                  </form>
+
+                  <div class="w-margin-top comment-con"></div>
+                </div>
+              </section>
+            </div>
+
+          </div>
+    
         </div>
 
         <div class="sel_c_con side-con">
@@ -408,115 +531,43 @@ for (i = 0; i < acc.length; i++) {
       $('.c_back_btn5').click(function() {
         $('.vid_c_con').removeClass('active')
       });
-    </script>
-  </template>
-
-  <!-- for projects -->
-  <template id="projects">
-    <?use-template: "sidenav"?>
-        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-        <main class="">
-          <h2 class="w-bold-x w-center">Projects</h2>
-          <div class="w-flex w-flex-around w-align-center">
-            <div class="h5 w-bold-x" style="min-width:80px"><i class="fa fa-filter"></i> Filter</div>
-            <select class="custom-select course-filter">
-              
-            </select>
-          </div>
-          <table class="table">
-            <tbody class="pro-row">
-              <tr>
-                <td colspan="2">
-                  <div class="loader">
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </main>
-
-        <div class="pro_c_con side-con">
-          <div class="mb-2">
-            <button class="add_emp_btn c_back_btn"><i class="fa fa-arrow-left"></i></button>
-
-            <div class="wrapper">
-              <input type="radio" name="slider" checked id="home">
-              <input type="radio" name="slider" id="code">
-              <input type="radio" name="slider" id="blog">
-              <div class="tabs">
-                <label for="home" class="home"><i class="fa fa-briefcase"></i>Info</label>
-                <label for="code" class="code"><i class="fa fa-trophy"></i>Rankings</label>
-                <label for="blog" class="blog"><i class="fa fa-book"></i>Submission</label>
-                <div class="slider"></div>
-              </div>
-              <section>
-                <div class="pro-detail w-padding-top content content-1">
-                  <div class="loader">
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                  </div>
-                </div>
-
-                <div class="content content-2">
-
-                </div>
-
-                <div class="content content-3">
-                  <form class="submit-form mt-2" data-id="">
-                    <div class="form-group">
-                      <label for="repo">Link to Source Code/Repository:</label>
-                      <input type="url" class="form-control" id="repo" value="">
-                    </div>
-                    <div class="form-group">
-                      <label for="live">Link to Live Project:</label>
-                      <input type="url" class="form-control" id="live" value="">
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="submit-form-btn btn btn-primary btn-block">Submit Project</button>
-                    </div>
-                  </form>
-
-                  <div class="w-margin-top comment-con"></div>
-                </div>
-              </section>
-            </div>
-
-          </div>
-    
-        </div>
-
-        <script src="./static/js/project.js"></script>
-    <script>
-      $('.pro-act').addClass('active');
-      $('.c_back_btn').click(function() {
+      $('.c_back_btn6').click(function() {
         $('.pro_c_con').removeClass('active')
       });
-      $('.course-filter').on('change', function() {
-        let loader = `<tr>
-                <td colspan="2">
-                  <div class="loader">
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                  </div>
-                </td>
-              </tr>`;
-        $('.pro-row').empty().append(loader)
-        getProjects();
-      })
       $('.submit-form').on('submit', function(e) {
         e.preventDefault();
         let pro_id = $(this).data('id')
         //console.log(pro_id)
         submitProject(pro_id)
       })
+    </script>
+  </template>
+
+  <!-- for projects -->
+  <template id="community">
+    <?use-template: "sidenav"?>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <main class="">
+          <h2 class="w-bold-x w-center">
+            Community&nbsp;&nbsp;
+            <button class="btn btn-primary w-round-xlarge"><i class="fa fa-plus"></i> Create</button>
+          </h2>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search for community">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+          </div>
+          
+        </main>
+
+        
+
+        <script src="./static/js/community.js"></script>
+    <script>
+      $('.pro-act').addClass('active');
+      
+      
     </script>
   </template>
 
@@ -605,8 +656,8 @@ for (i = 0; i < acc.length; i++) {
 <template route="/skills">
   <?use-template: "skills"?>
 </template>
-<template route="/projects">
-  <?use-template: "projects"?>
+<template route="/community">
+  <?use-template: "community"?>
 </template>
 <template route="/change_password">
   <?use-template: "change_password"?>

@@ -9,11 +9,11 @@ window.Apex = {
     //alert('gotten')
     if(d['status'] == 'success') {
       if(d.data) {
-        let views = []
+        let prices = []
         let titles = []
         for(var i in d.data) {
           p = d.data;
-          views.push(p[i].views)
+          prices.push(p[i].price)
           titles.push(p[i].title)
         }
         var optionsBar = {
@@ -35,8 +35,8 @@ window.Apex = {
           },
           colors: ["#00C5A4"],
           series: [{
-            name: "Views",
-            data: views,
+            name: "Prices",
+            data: prices,
           }],
           labels: titles,
           xaxis: {
@@ -50,7 +50,7 @@ window.Apex = {
               show: false
             },
             labels: {
-              show: true,
+              show: false,
               style: {
                 fontSize: '12px'
               }
@@ -83,11 +83,11 @@ window.Apex = {
             offsetY: -36
           },
           title: {
-            text: 'Projects Views',
+            text: 'Skill Prices',
             align: 'left',
           },
           subtitle: {
-            text: 'Views'
+            text: 'Prices'
           },
           tooltip: {
             shared: true,
@@ -99,7 +99,7 @@ window.Apex = {
         chartBar.render();
       }
       else {
-        document.querySelector('#bar').innerHTML = `<h3 class="w-text-grey">No project yet</h3>`
+        document.querySelector('#bar').innerHTML = `<h3 class="w-text-grey">No registered skill yet</h3>`
       }
     }
   }
@@ -168,7 +168,7 @@ window.Apex = {
     },
     colors: ['#775DD0', '#00C8E1', '#FFB900', '#E91E63'],
     title: {
-      text: 'Site Activity'
+      text: 'Course Progress'
     },
     series: [15, 40, 20, 25],
     labels: ['A', 'P', 'S', 'R'],
