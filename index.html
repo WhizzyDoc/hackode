@@ -8,11 +8,13 @@
     <link rel="stylesheet" type="text/css" href="./static/css/rigan.css">
     <link rel="stylesheet" type="text/css" href="./static/themes/w-theme-blue.css">
     <link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="./static/css/sweetalert.min.css">
     <link rel="stylesheet" type="text/css" href="./static/css/login.css">
     <script src="./static/module/swif.js"></script>
     <script src="./dist/jquery.min.js"></script>
     <script src="./static/js/bootstrap.min.js"></script>
+    <script src="./static/js/owl.carousel.min.js"></script>
     <script src="./static/js/sweetalert.min.js"></script>
     <script src="./dist/semantic.min.js"></script> 
     <title></title>
@@ -21,6 +23,76 @@
         <?include: "templates/_parts/404.html"?><?end?>
     </template>
 
+    <!-- Home -->
+    <template id="home">
+      <div class="owl-carousel dash">
+        <div class="slider-con">
+          <img src="./static/image/slide1.jpeg" alt="">
+          <div class="slider-text w-text-white">
+            <h2 class="w-bold-xx">Welcome to RIGLEARN</h2>
+            <h3 class="w-bold-x">Unlock Your Potential</h3>
+            <p>
+              Discover a world of learning opportunities with RIGLEARN. 
+              Our platform offers a diverse range of online courses tailored to your interests and aspirations. 
+              From computer science to finance, explore new horizons and enhance your skills from anywhere, anytime.
+            </p>
+          </div>
+        </div>
+        <div class="slider-con">
+          <img src="./static/image/slide2.jpeg" alt="">
+          <div class="slider-text w-text-black">
+            <h2 class="w-bold-xx">Why Choose RIGLEARN?</h2>
+            <h3 class="w-bold-x">Empower Yourself</h3>
+            <p>
+              Join a community of learners and experts dedicated to continuous growth and development. 
+              with RIGLEARN, you gain access to high-quality courses, flexible learning options, and personalized guidance. 
+              Elevate your career, expand your knowledge, and unleash your potential with us.
+            </p>
+          </div>
+        </div>
+        <div class="slider-con">
+          <img src="./static/image/slide3a.jpeg" alt="">
+          <div class="slider-text w-text-white">
+            <h2 class="w-bold-xx">Start Your Learning Journey</h2>
+            <h3 class="w-bold-x">Experience Excellence</h3>
+            <p>
+              Ready to embark on your learning adventure? Sign up today and dive into a world of knowledge and opportunity. 
+              With intuitive interfaces, interactive content, and supportive instructors, RIGLEARN makes learning engaging and rewarding. 
+              Take the first step towards a brighter future.
+            </p>
+
+            <div class="action-btns">
+              <a href="#register" class="action-btn1">REGISTER NOW</a>
+              <a href="#login" class="action-btn2">LOGIN</a>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+    <script>
+      $(".dash").owlCarousel({
+        margin: 20,
+        loop: false,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        responsive: {
+          0:{
+          items:1,
+          nav: false
+          },
+          600:{
+          items:1,
+          nav: false
+          },
+          1300:{
+          items:2,
+          nav: false
+          }
+        }
+      });
+    </script>
+    </template>
     <!-- login -->
   <template id="login">
     <div class="row">
@@ -139,7 +211,7 @@
                         <p class="mt-2 w-text-red" id="cpass_err"></p>
                         <p class="mt-2 w-text-red" id="register_err"></p>
                         <button type="submit" class="register-btn btn btn-block btn-primary">Create Account</button>
-                        <p class="mt-2">Already A Member? <a href="#">Log In</a></p>
+                        <p class="mt-2">Already A Member? <a href="#login">Log In</a></p>
                     </form>
 
         </div>
@@ -167,6 +239,9 @@
     <!-- Routes -->
 <!-- homepage -->
 <template route="/">
+    <?use-template: "home"?>
+  </template>
+  <template route="/login">
     <?use-template: "login"?>
   </template>
   <template route="/register">
