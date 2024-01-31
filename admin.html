@@ -13,6 +13,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-smile-o"></i><br>Me</a>
         <ul class="dropdown-menu w-card-16 w-left">
             <li><a class="user-act dropdown-item w-text-black w-padding" href="#profile"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a class="gpt-act dropdown-item w-text-black w-padding" href="#ask_gpt"><i class="fa fa-android"></i> Ask GPT</a></li>
             <li><a class="pass-act dropdown-item w-text-black w-padding" href="#change_password"><i class="fa fa-lock"></i> Change Password</a></li>
             <li><a class="acc-act dropdown-item w-text-black w-padding" href="#account_settings"><i class="fa fa-gear"></i> Account Settings</a></li>
             <li><a class="note-act dropdown-item w-text-black w-padding" href="#notifications"><i class="fa fa-bell"></i> Notifications</a></li>
@@ -182,27 +183,42 @@ for (i = 0; i < acc.length; i++) {
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
           <h2 class="w-bold-x w-center">Our Courses</h2>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search for courses">
+          <div class="w-flex w-flex-start w-align-center">
+            <div class="h4 w-bold-x fa fa-filter w-margin-right"></div>
+            <select class="custom-select cat-filter w-margin-right">
+            </select>
+            <div class="h4 w-bold-x fa fa-sort w-margin-right"></div>
+            <select class="custom-select sort-filter">
+              <option selected value="title">Name (A-Z)</option>
+              <option value="-title">Name (Z-A)</option>
+              <option value="price">Price (Low-High)</option>
+              <option value="-price">Price (High-Low)</option>
+            </select>
+          </div>
+          <div class="input-group mb-3 mt-2">
+            <input type="text" id="skill-input" class="form-control" placeholder="Search for courses">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
           </div>
-          <div class="skill-row">
-            <div class="loader">
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
-            </div>
-          </div>
+
+          <div class="skill-row"></div>
         </main>
 
         <!-- Material list -->
         <div class="ski_c_con side-con">
           <div class="mb-2">
             <button class="add_emp_btn c_back_btn"><i class="fa fa-arrow-left"></i></button>
-            <h3 style="text-align:center"><span class="skill-title w-text-blue w-bold-x"></span></h3>
+            
+
+            <div class="w-flex w-flex-start w-align-start mt-2">
+              <img src="" class="skill-img" alt="" />
+              <div>
+                <div class="h4"><span class="skill-title w-text-blue w-bold-x"></span></div>
+                <p class="h6 skill-num"></p>
+              </div>
+            </div>
+            <button data-id="" class="enroll-btn w-margin-top btn btn-success btn-block w-padding">Enroll Now</button>
 
             <div class="wrapper">
               <input type="radio" name="slider" checked id="home">
@@ -218,7 +234,7 @@ for (i = 0; i < acc.length; i++) {
                 <div class="skill-detail content w-margin-bottom w-padding-top content-1">
                 </div>
 
-                <div class="skill-courses content w-margin-bottom w-padding-top content-2">
+                <div class="skill-courses content w-margin-bottom w-padding-top content-2 w-flex-wrap w-flex-around w-align-center">
                 </div>
 
                 <div class="skill-reviews content w-margin-bottom w-padding-top content-3">
@@ -273,12 +289,30 @@ for (i = 0; i < acc.length; i++) {
             e.preventDefault()
             payWithPaystack()
           })
+          $('#skill-input').on('input', function() {
+            let v = $(this).val().toLowerCase();
+            $('.sk-item[data-name]').each(function() {
+              let dataName = $(this).data('name').toLowerCase();
+              if(dataName.includes(v)) {
+                $(this).show()
+              }
+              else {
+                $(this).hide()
+              }
+            })
+          })
           $('.c_back_btn').click(function() {
-        $('.ski_c_con').removeClass('active')
-      });
-      $('.c_back_btn2').click(function() {
-        $('.pay_c_con').removeClass('active')
-      });
+            $('.ski_c_con').removeClass('active')
+          });
+          $('.c_back_btn2').click(function() {
+            $('.pay_c_con').removeClass('active')
+          });
+          $('.cat-filter').on('change', function() {
+            getSkills()
+          })
+          $('.sort-filter').on('change', function() {
+            getSkills()
+          })
         </script>
   </template>
 
@@ -405,13 +439,13 @@ for (i = 0; i < acc.length; i++) {
             <h3><span class="course-title"></span> Course</h3>
 
             <div class="wrapper">
-              <input type="radio" name="slider" checked id="home">
-              <input type="radio" name="slider" id="code">
-              <input type="radio" name="slider" id="blog">
+              <input type="radio" name="slider" checked id="home2">
+              <input type="radio" name="slider" id="code2">
+              <input type="radio" name="slider" id="blog2">
               <div class="tabs">
-                <label for="home" class="home"><i class="fa fa-book"></i>Notes</label>
-                <label for="code" class="code"><i class="fa fa-video-camera"></i>Videos</label>
-                <label for="blog" class="blog"><i class="fa fa-question"></i>Quizzes</label>
+                <label for="home2" class="home"><i class="fa fa-book"></i>Notes</label>
+                <label for="code2" class="code"><i class="fa fa-video-camera"></i>Videos</label>
+                <label for="blog2" class="blog"><i class="fa fa-question"></i>Quizzes</label>
                 <div class="slider"></div>
               </div>
               <section>
@@ -552,12 +586,18 @@ for (i = 0; i < acc.length; i++) {
             Community&nbsp;&nbsp;
             <button class="btn btn-primary w-round-xlarge"><i class="fa fa-plus"></i> Create</button>
           </h2>
+
+          <h3 class="w-bold-x">My Communities</h3>
+          <div class="user-group-row mb-2"></div>
+
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search for community">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
           </div>
+
+          <div class="group-row"></div>
           
         </main>
 
@@ -678,6 +718,7 @@ for (i = 0; i < acc.length; i++) {
 <link rel="stylesheet" type="text/css" href="./static/css/rigan.css">
 <link rel="stylesheet" type="text/css" href="./static/themes/w-theme-blue.css">
 <link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+<link rel="stylesheet" type="text/css" href="./static/css/owl.carousel.min.css">
 <link rel="stylesheet" type="text/css" href="./static/css/sweetalert.min.css">
 <link rel="stylesheet" type="text/css" href="./static/css/nav.css">
 <script src="./static/module/swif.js"></script>
@@ -686,6 +727,7 @@ for (i = 0; i < acc.length; i++) {
 <script src="./static/js/popper.min.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/js/owl.carousel.min.js"></script>
 <script src="./static/js/sweetalert.min.js"></script>
 <script src="./dist/semantic.min.js"></script>
 <link rel="stylesheet" href="./static/lib/prism.css" />

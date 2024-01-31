@@ -1,5 +1,4 @@
 
-  /*
   function getSkills() {
     let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
     fetch(url)
@@ -31,6 +30,7 @@
                 $('.course-title').html(name)
                 $('.cou_c_con').addClass('active')
                 getSkillCourses(id)
+                getSkillProjects(id)
             })
         }
         else {
@@ -48,73 +48,6 @@
         getSkills()
     })
   }
-  getSkills()
-  */
-  
-  function fetchSkills() {
-    const storedData = sessionStorage.user_skills;
-    if(storedData) {
-        const storedTime = sessionStorage.user_skills_time;
-        if(new Date().getTime() - storedTime < 5*60*1000) {
-            return JSON.parse(storedData)
-        }
-    }
-    let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
-    fetch(url)
-    .then(res => {return res.json()})
-    .then(data => {
-      //console.log(data);
-      sessionStorage.setItem('user_skills', JSON.stringify(data));
-      sessionStorage.setItem('user_skills_time', new Date().getTime());
-      getSkills()
-    })
-    .catch(err => {
-        console.log(err)
-        swal("Error", "Please check your internet connection", "error")
-        getSkills();
-    })
-  }
-
-  function getSkills() {
-    const data = fetchSkills();
-    $('.skill-row').empty()
-      if(data.status == 'success') {
-        if(data.data) {
-            d = data.data
-            for(var i in d) {
-                var temp = `
-                <div class="sk-item" data-id="${d[i].id}" data-name="${d[i].title}">
-                    <img src="${base_image_url}${d[i].image}" alt="">
-                    <div class="sk-des">
-                        <div class="sk-title">${d[i].title}</div>
-                        <div class="w-text-gray sk-num">
-                            <div><i class="fa fa-bar-chart"></i> 24% done</div>
-                            <div><i class="fa fa-book"></i> ${data.c_count[i]} courses</div>
-                            <div><i class="fa fa-video-camera"></i> ${data.v_count[i]} videos</div>
-                        </div>
-                    </div>
-                </div>`;
-                $('.skill-row').append(temp)
-            }
-            $('.sk-item').click(function() {
-                let id = $(this).data('id')
-                let name = $(this).data('name')
-                $('.course-title').html(name)
-                $('.cou_c_con').addClass('active')
-                getSkillCourses(id)
-                getSkillProjects(id)
-            })
-        }
-        else {
-            var temp = `<div>${data.message}. <a class="w-text-red" href="#skills">Explore our courses</a></div>`
-            $('.skill-row').append(temp)
-        }
-      }
-      else if(data.status == 'error') {
-        $('.skill-row').append(data.message)
-      }
-  }
-  
   getSkills()
 
   function getSkillCourses(id) {

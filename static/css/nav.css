@@ -604,6 +604,9 @@ textarea {resize:none;}
 #home:checked ~ .tabs label.home,
 #blog:checked ~ .tabs label.blog,
 #code:checked ~ .tabs label.code,
+#home2:checked ~ .tabs label.home,
+#blog2:checked ~ .tabs label.blog,
+#code2:checked ~ .tabs label.code,
 #co:checked ~ .tabs label.co,
 #pr:checked ~ .tabs label.pr{
   color: navy;
@@ -628,10 +631,12 @@ textarea {resize:none;}
 .wrapper input[type="radio"]{
   display: none;
 }
-#code:checked ~ .tabs .slider{
+#code:checked ~ .tabs .slider,
+#code2:checked ~ .tabs .slider{
   left: 33.33333%;
 }
-#blog:checked ~ .tabs .slider{
+#blog:checked ~ .tabs .slider,
+#blog2:checked ~ .tabs .slider{
   left: 66.66667%;
 }
 #pr:checked ~ .tabs .slider{
@@ -644,11 +649,17 @@ section .content{
   text-align: left;
 }
 #home:checked ~ section .content-1,
+#home2:checked ~ section .content-1,
 #co:checked ~ section .content-1,
 #code:checked ~ section .content-2,
 #blog:checked ~ section .content-3,
+#code2:checked ~ section .content-2,
+#blog2:checked ~ section .content-3,
 #pr:checked ~ section .content-2{
   display: block;
+}
+#code:checked ~ section .skill-courses {
+  display: flex;
 }
 section .content .title{
   font-size: 21px;
@@ -926,4 +937,28 @@ text-align: justify;
   height: 300px;
   margin-top: 15px !important;
   background: #000;
+}
+.skill-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  padding: 3px;
+  border: 1px solid blue;
+  margin-right: 10px;
+}
+.review-con {
+  width: 95%;
+  margin: 5px auto;
+  background: rgba(7, 176, 228, 0.1);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
+  border-radius: 10px;
+}
+.review-con img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
 }

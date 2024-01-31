@@ -107,6 +107,8 @@ function logout() {
             localStorage.removeItem('names');
             localStorage.removeItem('dp');
             localStorage.removeItem('username');
+            sessionStorage.removeItem('user_skills');
+            sessionStorage.removeItem('skills');
             location.href = './index.html'
         }
         else if(data['status'] == 'error') {
