@@ -242,6 +242,11 @@ function sendGPTChat() {
             $('#gpt-content').append(temp);
             last_chat();
     })
+    $('.options').click(function() {
+                        var text = $(this).data('name')
+                        $(this).removeClass('active');
+                        copyText(text)
+                    })
 }
 
 function createGPTRoom() {
