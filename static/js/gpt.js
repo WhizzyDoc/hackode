@@ -202,7 +202,7 @@ function sendGPTChat() {
 
             var temp = `<div class="message-con">
                     <div class="chat other">
-                        <div class="options copy-chat" data-name='${c[i].reply}'>
+                        <div class="options copy-chat" data-name='${data.data.reply}'>
                             <i class="fa fa-copy option" data-action="copy"></i> Copy
                         </div>
                         <div class="msg" id="reply_${data.data.id}"></div>
