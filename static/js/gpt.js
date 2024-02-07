@@ -64,7 +64,7 @@ function loadGPTMessages() {
                                             <div class="options copy-chat" data-name='${c[i].reply}'>
                                                 <i class="fa fa-copy option" data-action="copy"></i> Copy
                                             </div>
-                                            <div class="msg"><pre>${escapeHtml(c[i].reply)}</pre></div>
+                                            <div class="msg">${escapeHtml(c[i].reply)}</div>
                                             <div class="time w-right">${time}</div>
                                         </div>
                                     </div>`;
@@ -211,7 +211,7 @@ function sendGPTChat() {
                 </div>`;
             $('#gpt-content').append(temp)
 
-            var txt = `<pre>${escapeHtml(data.data.reply)}</pre>`;
+            var txt = `${escapeHtml(data.data.reply)}`;
             elem = $(`#reply_${data.data.id}`);
             typeWriter(txt, elem);
             //loadGPTMessages()
