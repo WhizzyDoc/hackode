@@ -49,7 +49,17 @@ function loadGPTMessages() {
                         hour = (hour > 12) ? hour - 12 : hour;
                         min = (min < 10) ? "0" + min : min;
                         time = `${hour}:${min} ${session}`;
-
+                        var reply = c[i].reply;
+                        var formattedHtml = '';
+                        var segments = reply.split(/(<code>.*?<\/code>)/);
+                        for(var a=0; a<segments.length; a++) {
+                            if(segments[a].startsWith('<code>')) {
+                                formattedHtml += segments[a];
+                            }
+                            else {
+                                formattedHtml += $('<div>').text(segments[a]).html()
+                            }
+                        }
                         var temp = `<div class="message-con">
                                         <div class="chat user">
                                             <div class="options copy-chat" data-name='${c[i].prompt}'>
@@ -64,12 +74,18 @@ function loadGPTMessages() {
                                             <div class="options copy-chat" data-name='${c[i].reply}'>
                                                 <i class="fa fa-copy option" data-action="copy"></i> Copy
                                             </div>
-                                            <div class="msg"><pre>${escapeHtml(c[i].reply)}</pre></div>
+                                            <div class="msg">
+                                            <pre aria-hidden="true">${
+                                                escapeHtml(formattedHtml)
+                                            }</pre>
+                                            </div>
                                             <div class="time w-right">${time}</div>
                                         </div>
                                     </div>`;
                         $('#gpt-content').append(temp)
                     }
+                    $('code').addClass('language-html')
+                    $('code').addClass('highlighting-content')
                     last_chat();
                     $('.chat').click(function() {
                         $(this).children('.options').toggleClass('active');
@@ -307,6 +323,5 @@ function copyText(message) {
 }
 
 function escapeHtml(text) {
-    var escapedText = $('<div>').text(text).html();
-    return escapedText.replace(/\n/g, '<br>')
+    return text.replace(/\n/g, '<br>')
 }

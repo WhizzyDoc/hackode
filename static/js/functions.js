@@ -1,5 +1,5 @@
-//const base_image_url = `http://127.0.0.1:8000`;
-const base_image_url = `https://riganapi.pythonanywhere.com`;
+const base_image_url = `http://127.0.0.1:8000`;
+//const base_image_url = `https://riganapi.pythonanywhere.com`;
 const base_url = `${base_image_url}/api/v3/`;
 
 
