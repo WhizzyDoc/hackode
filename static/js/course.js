@@ -402,7 +402,7 @@
         $('.mat-title').html(d.topic.title);
         $('.mat-content').html(d.content);
         var pre = $('.mat-content').children('pre')
-        var code = $('.mat-content').children('pre').children('code')
+        var code = $('pre code')
         pre.attr('aria-hidden', true)
         if(pre.hasClass('language-markup')) {
             code.addClass('language-html highlighting-content')
