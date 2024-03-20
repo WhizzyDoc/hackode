@@ -29,7 +29,7 @@ function getSkills() {
                     <div class="sk-des">
                         <div class="sk-title">${d[i].title}</div>
                         <div class="w-text-gray sk-num">
-                            <div>N${digify(d[i].price)}</div>
+                            <div>&#8358;${digify(d[i].price)}</div>
                             <div><i class="fa fa-book"></i> ${data.c_count[i]} courses</div>
                             <div><i class="fa fa-calendar"></i> ${d[i].duration}</div>
                         </div>
@@ -124,7 +124,7 @@ function getSkills() {
         let temp = `
         <div class="w-text-gray w-flex w-flex-start w-align-center w-flex-wrap">
                             <div><i class="fa fa-certificate"></i> ${d.category.title}</div>&nbsp;&nbsp;
-                            <div><i class="fa fa-money"></i> N${digify(d.price)}</div>&nbsp;&nbsp;
+                            <div><i class="fa fa-money"></i> &#8358;${digify(d.price)}</div>&nbsp;&nbsp;
                             <div><i class="fa fa-calendar"></i> ${d.duration}</div>
                         </div>`;
                         
@@ -254,7 +254,7 @@ function getSkills() {
         d = data.data;
         $('#p_name').html(localStorage.names)
         $('#p_email').html(d.email)
-        $('#p_amt').html(`N${d.amount}`)
+        $('#p_amt').html(`&#8358;${d.amount}`)
         $('#p_des').html(`${data.skill.title}`)
         $('#p_ref').html(`${d.reference_id}`)
 

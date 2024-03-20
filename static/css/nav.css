@@ -1060,7 +1060,7 @@ text-align: justify;
 }
 .message-con .chat {
   width: auto;
-  max-width: 80%;
+  max-width: 95%;
   overflow-x: auto;
   overflow-y: visible;
   padding: 10px 10px 5px 10px;
@@ -1123,4 +1123,7 @@ text-align: justify;
 }
 .chat .options.active {
   transform: scale(1);
+}
+pre {
+  background: rgb(250, 243, 243) !important;
 }

@@ -74,11 +74,7 @@ function loadGPTMessages() {
                                             <div class="options copy-chat" data-name='${c[i].reply}'>
                                                 <i class="fa fa-copy option" data-action="copy"></i> Copy
                                             </div>
-                                            <div class="msg">
-                                            <pre aria-hidden="true">${
-                                                escapeHtml(formattedHtml)
-                                            }</pre>
-                                            </div>
+                                            <div class="msg">${escapeHtml(c[i].reply)}</div>
                                             <div class="time w-right">${time}</div>
                                         </div>
                                     </div>`;
@@ -218,7 +214,7 @@ function sendGPTChat() {
 
             var temp = `<div class="message-con">
                     <div class="chat other">
-                        <div class="options copy-chat" data-name='${c[i].reply}'>
+                        <div class="options copy-chat" data-name='${data.data.reply}'>
                             <i class="fa fa-copy option" data-action="copy"></i> Copy
                         </div>
                         <div class="msg" id="reply_${data.data.id}"></div>
@@ -227,7 +223,7 @@ function sendGPTChat() {
                 </div>`;
             $('#gpt-content').append(temp)
 
-            var txt = `<pre>${escapeHtml(data.data.reply)}</pre>`;
+            var txt = `${escapeHtml(data.data.reply)}`;
             elem = $(`#reply_${data.data.id}`);
             typeWriter(txt, elem);
             //loadGPTMessages()
@@ -258,6 +254,11 @@ function sendGPTChat() {
             $('#gpt-content').append(temp);
             last_chat();
     })
+    $('.options').click(function() {
+                        var text = $(this).data('name')
+                        $(this).removeClass('active');
+                        copyText(text)
+                    })
 }
 
 function createGPTRoom() {
@@ -323,5 +324,6 @@ function copyText(message) {
 }
 
 function escapeHtml(text) {
-    return text.replace(/\n/g, '<br>')
+    var escapedText = $('<div>').text(text).html();
+    return escapedText.replace(/\n/g, '<br>')
 }
