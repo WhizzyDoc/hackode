@@ -4,7 +4,7 @@
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      console.log(data);
+      //console.log(data);
       $('.skill-row').empty()
       if(data['status'] == 'success') {
         if(data.data) {
@@ -401,6 +401,12 @@
         d = data.data
         $('.mat-title').html(d.topic.title);
         $('.mat-content').html(d.content);
+        var pre = $('.mat-content').children('pre')
+        var code = $('.mat-content').children('pre').children('code')
+        pre.attr('aria-hidden', true)
+        if(pre.hasClass('language-markup')) {
+            code.addClass('language-html highlighting-content')
+        }
       }
       else if(data['status'] == 'error') {
         swal('Error', data.message, 'error')

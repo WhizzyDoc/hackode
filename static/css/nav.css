@@ -1125,5 +1125,7 @@ text-align: justify;
   transform: scale(1);
 }
 pre {
-  background: rgb(250, 243, 243) !important;
+  background: rgb(0,0,0) !important;
+  padding: 10x 5px;
 }
+
