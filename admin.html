@@ -503,6 +503,7 @@ for (i = 0; i < acc.length; i++) {
                       </tr>
                     </tbody>
                   </table>
+                  <div class="last_mat" data-id=""></div>
                 </div>
 
                 <div class="content content-2">
@@ -573,6 +574,10 @@ for (i = 0; i < acc.length; i++) {
             <button class="add_emp_btn c_back_btn3"><i class="fa fa-arrow-left"></i></button>
             <h3><span class="mat-title"></span></h3>
             <div class="mat-content"></div>
+            <div class="next-btns w-flex w-flex-between w-align-center">
+              <button class="next-prev-btn prev-b" data-id="" data-name="" data-action="first">&lt;&nbsp;Prev</button>
+              <button class="next-prev-btn next-b" data-id="" data-name="" data-action="last">Next&nbsp;&gt;</button>
+            </div>
           </div>
         </div>
 
@@ -586,17 +591,21 @@ for (i = 0; i < acc.length; i++) {
           </div>
         </div>
 
-        
+        <script src="./static/js/course.js"></script>
         <script src="./static/lib/codemirror.js"></script>
         <script src="./static/lib/codemirror_jsx.js"></script>
-        
-        <script src="./static/js/editor_2.js"></script>
         <script src="./static/lib/prism.js"></script>
-        <script src="./static/lib/prism1.js"></script>
-        <script src="./static/lib/prism2.js"></script>
-        <script src="./static/js/course.js"></script>
+        <script src="./static/js/editor_2.js"></script>
+        
+        
     <script>
       $('.course-act').addClass('active');
+      $('.next-prev-btn').click(function() {
+        var id = $(this).data('id')
+        var order = $(this).data('name')
+        var type = $(this).data('action')
+        getMaterial(id, order, type)
+      })
       $('.c_back_btn').click(function() {
         $('.sel_c_con').removeClass('active')
       });

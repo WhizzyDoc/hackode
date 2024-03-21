@@ -1129,3 +1129,16 @@ pre {
   padding: 10x 5px;
 }
 
+.next-prev-btn {
+    border: none;
+    padding: 15px 20px;
+    background: #a0b5f0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.next-btns {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}

@@ -277,16 +277,18 @@
                     clas = 'm-inactive'
                 }
                 var temp = `
-                <tr class="q-item ${clas}" data-id="${d[i].id}">
+                <tr class="q-item ${clas}" data-id="${d[i].order}" data-name="${d[i].topic.id}">
                     <td>${icon}&nbsp;&nbsp;${d[i].topic.title}<td>
                     <td><i class="fa fa-chevron-right"></i></td>
                 </tr>`;
                 $('.mat-row').append(temp)
             }
+            $('.last_mat').data('id', data.last_order)
             $('.m-active').click(function() {
-                let id = $(this).data('id')
+                let order = $(this).data('id')
+                let id = $(this).data('name')
                 $('.mat_c_con').addClass('active')
-                getMaterial(id)
+                getMaterial(id, order)
             })
             $('.m-inactive').click(function() {
                 swal('Oops!', 'Sorry, this material is locked at the moment', 'warning')
@@ -382,8 +384,21 @@
     })
   }
 
-  function getMaterial(id) {
-    let url = `${base_url}courses/get_material/?material_id=${id}`;
+  function getMaterial(id, order, type="invalid") {
+    if(Number(order) < 1) {
+        swal('Info', "You have reached the first topic", 'info')
+        return
+    }
+    var last_mat = $('.last_mat').data('id')
+    var lm = ""
+    if(last_mat !== "") {
+        lm = Number(last_mat)
+    }
+    if(Number(order) > lm) {
+        swal('Info', "You have reached the last topic", 'info')
+        return
+    }
+    let url = `${base_url}courses/get_next_material/?topic_id=${id}&order=${order}&type=${type}`;
     let con = `<div class="loader">
             <div class="ball"></div>
             <div class="ball"></div>
@@ -395,21 +410,36 @@
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-        $('.mat-content').empty()
+    $('.mat-content').empty()
       //console.log(data);
       if(data['status'] == 'success') {
         d = data.data
         $('.mat-title').html(d.topic.title);
         $('.mat-content').html(d.content);
+        $('.prev-b').data('id', id)
+        $('.prev-b').data('name', d.order-1)
+        $('.next-b').data('id', id)
+        $('.next-b').data('name', d.order+1)
         var pre = $('.mat-content').children('pre')
         var code = $('pre code')
         pre.attr('aria-hidden', true)
         if(pre.hasClass('language-markup')) {
-            code.addClass('language-html highlighting-content')
+            code.addClass('highlighting-content language-javascript')
         }
+
       }
       else if(data['status'] == 'error') {
-        swal('Error', data.message, 'error')
+        if(data.type == "material") {
+            var i = $('.prev-b').data('id')
+            var o = $('.prev-b').data('name')
+            or = Number(o) + 1
+            getMaterial(i, or)
+            swal('Info', "You have reached the last topic", 'info')
+        }
+        else {
+            swal('Error', data.message, 'error')
+        }
+        
       }
     })
     .catch(err => {
