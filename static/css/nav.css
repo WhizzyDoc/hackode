@@ -1132,6 +1132,15 @@ pre, pre code {
 }
 pre {
     border-left: 2px solid blue;
+    position: relative;
+}
+.copy-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      padding: 5px;
+      cursor: pointer;
+      background-color: #f0f0f0;
 }
 .next-prev-btn {
     border: none;
