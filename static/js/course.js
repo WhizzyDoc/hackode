@@ -87,7 +87,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        
         getSkillCourses(id)
     })
   }
