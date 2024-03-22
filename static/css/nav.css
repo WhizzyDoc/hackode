@@ -1127,7 +1127,9 @@ text-align: justify;
 .mat_c_con {
   background: #eee;
 }
-
+pre, pre code {
+  background: #fff !important
+}
 .next-prev-btn {
     border: none;
     padding: 15px 20px;
