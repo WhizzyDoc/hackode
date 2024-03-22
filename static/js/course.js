@@ -145,7 +145,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        getSkillProjects(id)
     })
   }
 
@@ -203,7 +203,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        getQuizzes(id)
     })
   }
 
@@ -251,7 +251,6 @@
     .catch(err => {
         console.log(err)
         getVideos(id)
-        swal("Error", "Please check your internet connection", "error")
     })
   }
 
@@ -311,7 +310,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        getMaterials(id)
     })
   }
 
@@ -379,7 +378,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        getQuiz(id)
     })
   }
 
@@ -422,7 +421,8 @@
         Prism.highlightAll()
         $('pre').each(function(index) {
       var $pre = $(this);
-      var $button = $('<button class="copy-button"><i class="fa fa-copy"></i> Copy</button>');
+      var $button = $('<button class="copy-button"><i class="fa fa-copy"></i> Copy Code</button>');
+      var $tryit = $('<button class="try-button"><i class="fa fa-code"></i> Try it Yourself</button>');
       $button.click(function() {
         var $tempInput = $('<textarea>');
         $('body').append($tempInput);
@@ -431,7 +431,17 @@
         $tempInput.remove();
         alert('Copied!');
       });
+      $tryit.click(function() {
+        var $tempInput = $('<textarea>');
+        $('body').append($tempInput);
+        text = $pre.find('code').text();
+        $('#editor').val(text)
+        displayHighlight()
+        showBrowser()
+        $('.edi_c_con').addClass('active')
+      });
       $pre.append($button);
+      $pre.append($tryit);
     });
 
       }
@@ -483,7 +493,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        getVideo(id)
     })
   }
 
@@ -538,7 +548,7 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        getProject(id)
     })
 }
 
@@ -642,6 +652,34 @@ function submitProject(id) {
         swal("Error", "Please check your internet connection", "error")
     })
   }
+  function escapeHtml(str) {
+    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  }
+  function displayHighlight() {
+    var code1 = $('#editor').val();
+      //console.log(code1)
+      escapedString = escapeHtml(code1)
+      content = `<pre class="language-markup"><code>${escapedString}</code></pre>`
+      //console.log(content)
+      $('#editable').html(content)
+      Prism.highlightAll()
+    }
+
+    var code = document.querySelector("#code_result").contentWindow.document
+    var html = document.querySelector("#editor");
+    //For code compilation into browser
+    function showBrowser() {
+        code.open();
+        code.writeln(
+        html.value
+        );
+        code.close();
+    }
+    document.body.onkeyup = function() {
+        showBrowser()
+    };
 
   var slideIndex = 1;
   function showQue() {
@@ -697,16 +735,3 @@ function readFile() {
     reader.readAsDataURL(file);
 }
 
-
-
-tinymce.init({
-    selector: '.html-text',
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Admin',
-    mergetags_list: [
-        {value: 'First.Name', title: 'First Name'},
-        {value: 'Email', title: 'Email'},
-    ],
-});

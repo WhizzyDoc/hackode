@@ -1127,22 +1127,28 @@ text-align: justify;
 .mat_c_con {
   background: #eee;
 }
-pre, pre code {
+.mat_c_con pre, .mat_c_con pre code {
   background: #fff !important
 }
-pre {
+.mat_c_con pre {
     border-left: 2px solid blue;
     position: relative;
+    padding-bottom: 30px !important;
+}
+.copy-button, .try-button {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #222;
+  color: #fff;
+  border: none;
 }
 .copy-button {
-      position: sticky;
-    position: -webkit-sticky;
-    display: block;
-    width: fit-content;
       left: 5px;
-      padding: 5px;
-      cursor: pointer;
-      background-color: #f0f0f0;
+}
+.try-button {
+  right: 5px;
 }
 .next-prev-btn {
     border: none;
@@ -1164,4 +1170,62 @@ pre {
 .openai-con img {
   width: 100%;
   height: auto;
+}
+.nav-tabs .nav-item {
+  width:50% !important;
+  text-align: center;
+}
+#editable {
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 2000%;
+}
+.edi_c_con pre {
+  display: block;
+  height: 2000%;
+  margin: 0 !important;
+  padding: 10px !important;
+  background: #f0f0f0 !important;
+  font-size: 14px !important;
+}
+.tab-content, .tab-pane {
+  width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.editor-con {
+  height: calc(100vh - 170px);
+  position: relative;
+  border: 1px solid gray;
+  width: 90%;
+  overflow: auto;
+  background: #f0f0f0;
+}
+#editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: black;
+  border: none;
+  outline: none;
+  height: 2000%;
+  margin: 0;
+  display: block;
+  width: 2000%;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 150%;
+}
+#code_result {
+  width: 90%;
+  height: calc(100vh - 170px);
+  border: none;
+  outline: none;
 }

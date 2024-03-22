@@ -612,6 +612,35 @@ for (i = 0; i < acc.length; i++) {
           </div>
         </div>
 
+        <!-- Material list -->
+        <div class="edi_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn7"><i class="fa fa-arrow-left"></i></button>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs mt-2">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#html_code"><i class="fa fa-code"></i> Code Editor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#browser"><i class="fa fa-desktop"></i> Result</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active container" id="html_code">
+                <div class="editor-con">
+                  <div id="editable"></div>
+                  <textarea id="editor" autocomplete="off"></textarea>
+                </div>
+              </div>
+              <div class="tab-pane container" id="browser">
+                <iframe id="code_result"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Video con -->
         <div class="vid_c_con side-con">
           <div class="mb-2">
@@ -627,6 +656,9 @@ for (i = 0; i < acc.length; i++) {
         
     <script>
       $('.course-act').addClass('active');
+      $('#editor').on('input', function() {
+        displayHighlight()
+      });
       $('.next-prev-btn').click(function() {
         var id = $(this).data('id')
         var order = $(this).data('name')
@@ -650,6 +682,9 @@ for (i = 0; i < acc.length; i++) {
       });
       $('.c_back_btn6').click(function() {
         $('.pro_c_con').removeClass('active')
+      });
+      $('.c_back_btn7').click(function() {
+        $('.edi_c_con').removeClass('active')
       });
       $('.submit-form').on('submit', function(e) {
         e.preventDefault();
