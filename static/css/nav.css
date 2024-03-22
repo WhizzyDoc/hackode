@@ -1133,10 +1133,11 @@ pre, pre code {
 pre {
     border-left: 2px solid blue;
     position: relative;
-    padding-top: 20px !important;
+    padding-top: 30px !important;
 }
 .copy-button {
-      position: absolute;
+      position: sticky;
+    position: -webkit-sticky;
       top: 5px;
       right: 5px;
       padding: 5px;
