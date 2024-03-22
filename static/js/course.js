@@ -420,6 +420,19 @@
         $('.next-b').data('id', id)
         $('.next-b').data('name', d.order+1)
         Prism.highlightAll()
+        $('pre').each(function(index) {
+      var $pre = $(this);
+      var $button = $('<button class="copy-button"><i class="fa fa-copy"></i> Copy</button>');
+      $button.click(function() {
+        var $tempInput = $('<textarea>');
+        $('body').append($tempInput);
+        $tempInput.val($pre.find('code').text()).select();
+        document.execCommand('copy');
+        $tempInput.remove();
+        alert('Copied!');
+      });
+      $pre.append($button);
+    });
 
       }
       else if(data['status'] == 'error') {
