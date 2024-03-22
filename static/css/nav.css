@@ -1124,9 +1124,8 @@ text-align: justify;
 .chat .options.active {
   transform: scale(1);
 }
-pre {
-  background: rgb(0,0,0) !important;
-  padding: 10x 5px;
+.mat_c_con {
+  background: #eee;
 }
 
 .next-prev-btn {

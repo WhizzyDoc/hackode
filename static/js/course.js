@@ -44,7 +44,6 @@
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
         getSkills()
     })
   }
@@ -420,12 +419,7 @@
         $('.prev-b').data('name', d.order-1)
         $('.next-b').data('id', id)
         $('.next-b').data('name', d.order+1)
-        var pre = $('.mat-content').children('pre')
-        var code = $('pre code')
-        pre.attr('aria-hidden', true)
-        if(pre.hasClass('language-markup')) {
-            code.addClass('highlighting-content language-javascript')
-        }
+        Prism.highlightAll()
 
       }
       else if(data['status'] == 'error') {
