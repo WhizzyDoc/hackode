@@ -414,7 +414,7 @@
       if(data['status'] == 'success') {
         d = data.data
         $('.mat-title').html(d.topic.title);
-        $('.mat-content').html(d.content);
+        //$('.mat-content').html(d.content);
         $('.prev-b').data('id', id)
         $('.prev-b').data('name', d.order-1)
         $('.next-b').data('id', id)
@@ -432,6 +432,7 @@
         alert('Copied!');
       });
       $pre.append($button);
+      $('.mat-content').html(d.content);
     });
 
       }
