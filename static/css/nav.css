@@ -1143,3 +1143,11 @@ pre, pre code {
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
+.openai-con a {
+  color: red;
+}
+.openai-con img {
+  width: 100%;
+  height: auto;
+}

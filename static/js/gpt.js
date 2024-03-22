@@ -1,3 +1,4 @@
+
 function last_chat() {
     $('.app-content').scrollTop($('.app-content')[0].scrollHeight);
     $('#gpt-content').scrollTop($('#gpt-content')[0].scrollHeight);
@@ -194,6 +195,7 @@ function sendGPTChat() {
     last_chat();
 
     $('#gpt-prompt').val('');
+    $('#gpt-prompt').css({'height': 'fit-content'});
     fetch(url, {
         method: 'POST',
         headers: {
@@ -231,7 +233,8 @@ function sendGPTChat() {
         else if(data.status == 'error') {
             var message;
             if(data.mode == 'server') {
-                message = data.message;
+                message = `No API Key found! <a href="#profile" class="w-text-red">Click Here</a> to set up your OpenAI API Key.
+                 If you don't have a key, <a href="#openai_key" class="w-text-red">Click Here</a> to learn how to get a key.`;
             }
             else if(data.mode == 'gpt') {
                 message = data.message;
@@ -299,17 +302,16 @@ function createGPTRoom() {
     })
 }
 
+var y = 0
 
-var i = 0
-var speed = 30
 function typeWriter(txt, elem) {
-    if (i < txt.length) {
-        elem.html(txt.substring(0, i + 1));
-        i++;
+    if (y < txt.length) {
+        elem.html(txt.substring(0, y + 1));
+        y++;
         last_chat();
         setTimeout(function() {
             typeWriter(txt, elem);
-        }, speed);
+        }, 30);
     }
 }
 

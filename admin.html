@@ -190,6 +190,11 @@ for (i = 0; i < acc.length; i++) {
                 <label for="email"><span class="w-text-red w-bold">*</span> Email:</label>
                 <input type="email" class="form-control" id="email">
               </div>
+              <div class="form-group">
+                <label for="openai">OpenAI API Key:</label>
+                <input type="text" class="form-control" id="openai">
+                <p>If you don't have a key, <a href="#openai_key" class="w-text-red">Click Here</a> to learn how to get a key.</p>
+              </div>
               
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
@@ -351,6 +356,30 @@ for (i = 0; i < acc.length; i++) {
             getSkills()
           })
         </script>
+  </template>
+
+  <template id="openai_key">
+    <?use-template: "sidenav"?>
+    <main class="openai-con">
+      <h2 class="w-bold-x w-center">How To Get Your OpenAI API Key</h2>
+      <h3>Step 1: Create an account</h3>
+      <p>Signing up on OpenAI is entirely free. you can create a free account by <a href="https://chat.openai.com/auth/login/" target="_blank">clicking here.</a></p>
+      <h3>Step 2: Generate an API key</h3>
+      <p>Once logged in, head to the left navigation bar and click "API Keys"</p>
+      <a href="./static/image/openai1.png">
+        <img src="./static/image/openai1.png" alt="">
+      </a>
+      <p>On the next screen, click "+ Create new secret key" and enter a name for your key in the pop-up window (it is optional). After entering a name, click "Create secret key"</p>
+      <a href="./static/image/openai2.png">
+        <img src="./static/image/openai2.png" alt="">
+      </a>
+      <p>On the next screen, copy yor API key and store it somewhere safe. <b>You will not be able to view it again.</b></p>
+      <a href="./static/image/openai3.png">
+        <img src="./static/image/openai3.png" alt="">
+      </a>
+      <h3>Step 3: Set up your API key</h3>
+      <p><a href="#profile">click here</a> to set up your API key by pasting it in the required field and save</p>
+    </main>
   </template>
 
   <!-- for courses -->
@@ -860,6 +889,9 @@ for (i = 0; i < acc.length; i++) {
 </template>
 <template route="/ask_gpt">
   <?use-template: "ask_gpt"?>
+</template>
+<template route="/openai_key">
+  <?use-template: "openai_key"?>
 </template>
 <template route="/change_password">
   <?use-template: "change_password"?>

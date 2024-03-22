@@ -10,6 +10,7 @@ function getProfile() {
             $('#fname').val(p.first_name)
             $('#lname').val(p.last_name)
             $('#email').val(p.email)
+            $('#openai').val(p.openai_key)
             if(p.image) {
                 $('.comp_image').attr('src', `${base_image_url}${p.image}`)
             }
@@ -40,6 +41,7 @@ function saveProfile() {
     let fname = $('#fname').val()
     let lname = $('#lname').val()
     let email = $('#email').val()
+    let openai = $('#openai').val()
     let image = $('.comp-im')[0].files[0]
     if(fname.trim() === '' || email.trim() === '' || lname.trim() === '') {
         swal("OOps", "Names or Email cannot be empty", "warning");
@@ -50,6 +52,7 @@ function saveProfile() {
     formData.append('fname', fname)
     formData.append('lname', lname)
     formData.append('email', email)
+    formData.append('openai', openai)
     if(image) {
         formData.append('image', image)
     }
