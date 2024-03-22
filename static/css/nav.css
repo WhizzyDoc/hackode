@@ -1133,6 +1133,7 @@ pre, pre code {
 pre {
     border-left: 2px solid blue;
     position: relative;
+    padding-top: 20px !important;
 }
 .copy-button {
       position: absolute;
