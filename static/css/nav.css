@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 /* custom scroll bar */
-::-webkit-scrollbar {width: 0px !important;}
+::-webkit-scrollbar {width: 0px !important;height:1px !important}
 ::-webkit-scrollbar-track {background: #242526;}
 ::-webkit-scrollbar-thumb {background: #3A3B3C;}
 a {color: grey}
@@ -94,7 +94,14 @@ body {
    main {
     margin-left: 250px;
     background: #fff;
-    margin-bottom: 40px;
+    height: 100vh;
+    position: relative;
+    background: url("../image/page_bg.png") no-repeat fixed center;
+    background-size: 100% 100%;
+  }
+  main.dashboard {
+    background: url("../image/home_bg.png") no-repeat fixed center;
+    background-size: 100% 100%;
   }
   .side-con {
     position: fixed;
@@ -185,7 +192,7 @@ body {
     main {
         transition: margin-left .5s;
         margin-left: 0;
-        padding: 20px;
+        padding: 20px 5px;
     }
     .side-con {width:100%}
     .side-con.active {
@@ -254,11 +261,13 @@ header {
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    /*
     position: sticky;
     position: -webkit-sticky;
     top: 0;
     z-index: 100;
-    background: #fff;
+    */
+    background: transparent;
 }
 .alert-note {
   display: none;
@@ -270,11 +279,11 @@ header {
     align-items: center;
 }
 .notification {
-    font-size: 25px;
+    font-size: 35px;
 }
 .admin-img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 5px;
 }
@@ -688,6 +697,24 @@ section .content{
 #code:checked ~ section .skill-courses {
   display: flex;
 }
+.course-progress, .empty {
+  width: 100%;
+  height: 85px;
+}
+.lim-con {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: calc(100% - 170px);
+  border: none;
+  overflow-y: auto;
+}
+.lim-con.commu {
+  height: calc(100% - 320px);
+}
+.user-group-row {
+  overflow-x: auto;
+}
 section .content .title{
   font-size: 21px;
   font-weight: 500;
@@ -710,8 +737,8 @@ text-align: justify;
 /* organization */
 .company_image {
   margin: auto;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   padding: 2px;
   border: 1px solid lightblue;
@@ -978,8 +1005,8 @@ text-align: justify;
   padding: 5px;
 }
 .com-item img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 .com-title {

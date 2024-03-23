@@ -43,7 +43,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-smile-o"></i><br>Me</a>
         <ul class="dropdown-menu w-card-16 w-left">
             <li><a class="user-act dropdown-item w-padding" href="#profile"><i class="fa fa-user"></i> Profile</a></li>
-            <li><a class="gpt-act dropdown-item w-padding" href="#ask_gpt"><i class="fa fa-android"></i> Ask GPT</a></li>
+            <li><a class="gpt-act dropdown-item w-padding" href="#ask_gpt"><i class="fa fa-android"></i> Rigan AI</a></li>
             <li><a class="pass-act dropdown-item w-padding" href="#change_password"><i class="fa fa-lock"></i> Change Password</a></li>
             <li><a class="acc-act dropdown-item w-padding" href="#account_settings"><i class="fa fa-gear"></i> Account Settings</a></li>
             <li><a class="note-act dropdown-item w-padding" href="#notifications"><i class="fa fa-bell"></i> Notifications</a></li>
@@ -89,7 +89,7 @@ for (i = 0; i < acc.length; i++) {
     
     <header class="">
       <form class="w-margin-right" id="">
-        <h3 class="w-bold-xx w-text-blue">
+        <h3 class="w-bold-xx w-text-white">
           <img src="./static/image/rlogo_bg.png" alt="" style="width:40px;height:40px;">
           RIGLEARN
         </h3>
@@ -100,7 +100,7 @@ for (i = 0; i < acc.length; i++) {
             <img src="./static/image/avatar.png" alt="" class="admin-img" />
           </a>
         </div>
-        <a class="notification" href="#notifications"><i class="fa fa-bell"></i></a>
+        <a class="notification" href="#notifications"><i class="fa fa-bell w-text-white"></i></a>
       </div>
     </header>
     
@@ -121,37 +121,38 @@ for (i = 0; i < acc.length; i++) {
     
       <?use-template: "sidenav"?>
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-      <main class="">
+      <main class="dashboard">
         <?use-template: "header"?>
-        <div class="alert-note alert alert-danger">
-          <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
-        </div>
-        <h3>Welcome Back</h3>
-        <p class="w-text-gray">Use the navigation bar for quick access to all our features</p>
-        
-        <div id="dash-wrapper">
-          <div class="content-area">
+        <div class="lim-con" style="margin-top:60px;">
+          <div class="alert-note alert alert-danger">
+            <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
+          </div>
+          <h3 class=" w-padding-top">Welcome Back</h3>
+          <p class="w-text-gray">Use the navigation bar for quick access to all our features</p>
+          
+          <div id="dash-wrapper">
+            <div class="content-area">
 
-            <div class="row mt-4">
-              <div class="w-margin-bottom col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
-                <div class="box shadow">
-                  <div id="bar"></div>
+              <div class="row mt-4">
+                <div class="w-margin-bottom col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
+                  <div class="box shadow">
+                    <div id="bar"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-4">
-                <div class="box shadow">
-                  <div id="donutTop"></div>
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-4">
+                  <div class="box shadow">
+                    <div id="donutTop"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
-                <div class="box shadow">
-                  <div id="radialBar1"></div>
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+                  <div class="box shadow">
+                    <div id="radialBar1"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
 
       </main>
       <script src="./static/js/chart.js"></script>
@@ -166,7 +167,7 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">Student Profile</h2>
+          <h2 class="w-bold-x w-center w-text-white">Student Profile</h2>
           <form class="row comp-form" id="comp-form">
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
@@ -176,29 +177,30 @@ for (i = 0; i < acc.length; i++) {
                 <input type="file" accept="image/*" id="comp_image_in" class="comp-im" onchange="readFile();" />
               </div>
             </div>
-
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <div class="form-group">
-                <label for="fname"><span class="w-text-red w-bold">*</span> First Name:</label>
-                <input type="text" class="form-control" id="fname">
+            <div class="lim-con">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
+                <div class="form-group">
+                  <label for="fname"><span class="w-text-red w-bold">*</span> First Name:</label>
+                  <input type="text" class="form-control" id="fname">
+                </div>
+                <div class="form-group">
+                  <label for="lname"><span class="w-text-red w-bold">*</span> Last Name:</label>
+                  <input type="text" class="form-control" id="lname">
+                </div>
+                <div class="form-group">
+                  <label for="email"><span class="w-text-red w-bold">*</span> Email:</label>
+                  <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="openai">OpenAI API Key:</label>
+                  <input type="text" class="form-control" id="openai">
+                  <p>If you don't have a key, <a href="#openai_key" class="w-text-red">Click Here</a> to learn how to get a key.</p>
+                </div>
+                
               </div>
-              <div class="form-group">
-                <label for="lname"><span class="w-text-red w-bold">*</span> Last Name:</label>
-                <input type="text" class="form-control" id="lname">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <button type="submit" class="btn btn-block form-btn comp-btn">Save Profile</button>
               </div>
-              <div class="form-group">
-                <label for="email"><span class="w-text-red w-bold">*</span> Email:</label>
-                <input type="email" class="form-control" id="email">
-              </div>
-              <div class="form-group">
-                <label for="openai">OpenAI API Key:</label>
-                <input type="text" class="form-control" id="openai">
-                <p>If you don't have a key, <a href="#openai_key" class="w-text-red">Click Here</a> to learn how to get a key.</p>
-              </div>
-              
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <button type="submit" class="btn btn-block form-btn comp-btn">Save Profile</button>
             </div>
           </form>
         </main>
@@ -217,12 +219,12 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">Our Courses</h2>
+          <h2 class="w-bold-x w-center w-text-white">Our Courses</h2>
           <div class="w-flex w-flex-start w-align-center">
-            <div class="h4 w-bold-x fa fa-filter w-margin-right"></div>
+            <div class="h4 w-bold-x w-text-white fa fa-filter w-margin-right"></div>
             <select class="custom-select cat-filter w-margin-right">
             </select>
-            <div class="h4 w-bold-x fa fa-sort w-margin-right"></div>
+            <div class="h4 w-bold-x w-text-white fa fa-sort w-margin-right"></div>
             <select class="custom-select sort-filter">
               <option selected value="title">Name (A-Z)</option>
               <option value="-title">Name (Z-A)</option>
@@ -237,12 +239,14 @@ for (i = 0; i < acc.length; i++) {
             </div>
           </div>
 
-          <div class="skill-row">
-            <div class="loader">
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
+          <div class="lim-con">
+            <div class="skill-row ski">
+              <div class="loader">
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+              </div>
             </div>
           </div>
         </main>
@@ -387,13 +391,18 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">My Courses</h2>
-          <div class="skill-row">
-            <div class="loader">
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
+          <h2 class="w-bold-x w-center w-text-white">My Courses</h2>
+          <div class="course-progress">
+            
+          </div>
+          <div class="lim-con">
+            <div class="skill-row">
+              <div class="loader">
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+              </div>
             </div>
           </div>
         </main>
@@ -700,10 +709,17 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">
+          <h2 class="w-bold-x w-center w-text-white">
             Community&nbsp;&nbsp;
-            <button class="btn btn-primary w-round-xlarge"><i class="fa fa-plus"></i> Create</button>
+            <button class="btn btn-primary w-round-xlarge w-white w-text-blue"><i class="fa fa-plus"></i> Create</button>
           </h2>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="group-search" placeholder="Search for community">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+          </div>
 
           <h3 class="w-bold-x">My Communities</h3>
           <div class="user-group-row mb-2 w-flex w-flex-start w-align-center">
@@ -714,20 +730,14 @@ for (i = 0; i < acc.length; i++) {
               <div class="ball"></div>
             </div>
           </div>
-
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id="group-search" placeholder="Search for community">
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fa fa-search"></i></span>
-            </div>
-          </div>
-
-          <div class="group-row">
-            <div class="loader">
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
-              <div class="ball"></div>
+          <div class="lim-con commu">
+            <div class="group-row">
+              <div class="loader">
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+                <div class="ball"></div>
+              </div>
             </div>
           </div>
           
@@ -757,8 +767,8 @@ for (i = 0; i < acc.length; i++) {
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
           <div class="w-flex w-flex-between w-align-center">
-            <div class="h3 w-bold-x"><i class="fa fa-android"></i> RiganAI</div>
-            <div class="h2 w-bold-xx fa fa-history gpt_history"></div>
+            <div class="h3 w-text-white w-bold-x"><i class="fa fa-android"></i> RiganAI</div>
+            <div class="h2 w-text-white w-bold-xx fa fa-history gpt_history"></div>
           </div>
 
           <div class="app-content" id="gpt-content">
@@ -839,30 +849,33 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">Change Password</h2>
-          <form class="row comp-form" id="change-pass-form">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
-              <label for="">Old Password:</label>
-              <div class="input-group mb-3">
-                <input type="password" id="old_pass" class="form-control" required>
-                <div class="input-group-append">
-                  <span class="input-group-text w-black show-pass"><i class="fa fa-eye"></i></span>
+          <h1 class="w-bold-x w-center w-text-white">Change Password</h1>
+          <div class="empty"></div>
+          <div class="lim-con">
+            <form class="row comp-form" id="change-pass-form">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+                <label for="">Old Password:</label>
+                <div class="input-group mb-3">
+                  <input type="password" id="old_pass" class="form-control" required>
+                  <div class="input-group-append">
+                    <span class="input-group-text w-black show-pass"><i class="fa fa-eye"></i></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
-              <label for="">New Password:</label>
-              <div class="input-group mb-3">
-                <input type="password" id="new_pass" class="form-control" required>
-                <div class="input-group-append">
-                  <span class="input-group-text w-black show-pass"><i class="fa fa-eye"></i></span>
+              <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+                <label for="">New Password:</label>
+                <div class="input-group mb-3">
+                  <input type="password" id="new_pass" class="form-control" required>
+                  <div class="input-group-append">
+                    <span class="input-group-text w-black show-pass"><i class="fa fa-eye"></i></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <button type="submit" class="btn btn-block form-btn pass-btn">Change Password</button>
-            </div>
-          </form>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
+                <button type="submit" class="btn btn-block form-btn pass-btn">Change Password</button>
+              </div>
+            </form>
+          </div>
         </main>
         <script src="./static/js/settings.js"></script>
     <script>
@@ -889,13 +902,27 @@ for (i = 0; i < acc.length; i++) {
     <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <h2 class="w-bold-x w-center">Account Settings</h2>
-          
+          <h2 class="w-bold-x w-center w-text-white">Account Settings</h2>
+          <div class="empty"></div>
         </main>
         <script src=""></script>
     <script>
       $('.set-act').addClass('active');
       $('.acc-act').addClass('active');
+    </script>
+  </template>
+
+  <!-- for account settings -->
+  <template id="notifications">
+    <?use-template: "sidenav"?>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <main class="">
+          <h2 class="w-bold-x w-center w-text-white">Notifications</h2>
+          <div class="empty"></div>
+        </main>
+        <script src=""></script>
+    <script>
+      $('.note-act').addClass('active');
     </script>
   </template>
 
@@ -921,6 +948,9 @@ for (i = 0; i < acc.length; i++) {
 </template>
 <template route="/community">
   <?use-template: "community"?>
+</template>
+<template route="/notifications">
+  <?use-template: "notifications"?>
 </template>
 <template route="/ask_gpt">
   <?use-template: "ask_gpt"?>
