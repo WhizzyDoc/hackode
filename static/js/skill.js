@@ -122,7 +122,7 @@ function getSkills() {
         $('.skill-img').attr('src', `${base_image_url}${d.image}`);
         $('.enroll-btn').data('id', d.id)
         let temp = `
-        <div class="w-text-gray w-flex w-flex-start w-align-center w-flex-wrap">
+        <div class="w-text-white w-flex w-flex-start w-align-center w-flex-wrap">
                             <div><i class="fa fa-certificate"></i> ${d.category.title}</div>&nbsp;&nbsp;
                             <div><i class="fa fa-money"></i> &#8358;${digify(d.price)}</div>&nbsp;&nbsp;
                             <div><i class="fa fa-calendar"></i> ${d.duration}</div>

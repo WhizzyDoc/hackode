@@ -106,14 +106,15 @@ body {
   .side-con {
     position: fixed;
     width: calc(100% - 250px);
-    height: 100%;
-    overflow-y: auto;
+    height: 100vh !important;
+    overflow-y: hidden;
     left: 110%;
     top: 0;
     z-index: 150;
     padding: 20px;
-    background: #fff;
-    margin-bottom: 60px;
+    background: #fff url("../image/bg.png") no-repeat fixed center;
+    background-size: 100% 100%;
+    
     max-width: 100%;
     overflow-x: hidden;
     transition: all .5s ease;
@@ -791,6 +792,38 @@ text-align: justify;
   border-radius: 10px;
   margin-right: 20px;
 }
+.add_emp_btn.back {
+  background: transparent;
+  font-size: 25px;
+  outline: none;
+  margin-right: 30px;
+  position: relative;
+  top: -15px;
+  left: -15px;
+}
+.radio-con {
+  width: 100%;
+  height: calc(100vh - 300px);
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+.radio-con2, .radio-con3, .radio-con4, .quiz-content {
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+.radio-con2 {
+  height: calc(100vh - 150px);
+}
+.radio-con3 {
+  height: calc(100vh - 200px);
+}
+.radio-con4 {
+  height: calc(100vh - 230px);
+}
+.quiz-content {
+  height: calc(100vh - 200px);
+}
 .page_nos, .com_page_nos {
   width: 100%;
   display: flex;
@@ -1152,7 +1185,9 @@ text-align: justify;
   transform: scale(1);
 }
 .mat_c_con {
-  background: #eee;
+  background: #fff url("../image/mat_bg.png") no-repeat fixed center;
+    background-size: 100% 100%;
+    
 }
 .mat_c_con pre, .mat_c_con pre code {
   background: #fff !important
@@ -1188,7 +1223,7 @@ text-align: justify;
 }
 .next-btns {
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .openai-con a {
@@ -1202,6 +1237,7 @@ text-align: justify;
   width:50% !important;
   text-align: center;
 }
+.nav-item a {color:#fff}
 #editable {
   border: none;
   outline: none;
