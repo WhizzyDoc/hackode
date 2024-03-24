@@ -1,17 +1,22 @@
 // For Admin
 
-  function getTotalSkill() {
-    let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
+  function getData() {
+    let url = `${base_url}students/get_data/?api_token=${localStorage.api_key}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      //console.log(data);
-      
-      drawViewChart(data)
+      console.log(data);
+      if(data.status == 'success') {
+        drawViewChart(data.scores_data)
+      }
+      $('.page-loader').hide()
     })
-    .catch(err => {console.log(err)})
+    .catch(err => {
+      console.log(err);
+      getData()
+    })
   }
 
 
-  getTotalSkill()
+  getData()
   //getTotalUsers()

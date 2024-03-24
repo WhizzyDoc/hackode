@@ -7,13 +7,6 @@ function getSkills() {
       cat_filter = `&cat_id=${cat}`;
     }
     let url = `${base_url}skills/get_skills/?sort_by=${sort}${cat_filter}`;
-    let con = `<div class="loader">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>`;
-    $('.skill-row').html(con)
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -54,10 +47,10 @@ function getSkills() {
       else if(data['status'] == 'error') {
         $('.skill-row').append(data.message)
       }
+      $('.page-loader').hide()
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
         getSkills()
     })
   }
@@ -93,6 +86,7 @@ function getSkills() {
     })
     .catch(err => {
         console.log(err)
+        getSkillCategories()
     })
   }
   getSkillCategories()

@@ -101,6 +101,7 @@ function loadGPTMessages() {
         else if(data['status'] == 'error') {
             $('#gpt-content').html(`<p class="w-center w-text-gray w-small">${data.message}</p>`)
         }
+        $('.page-loader').hide()
     })
     .catch(error => {
         console.log(error);

@@ -1,13 +1,5 @@
 function getGroups() {
     let url = `${base_url}groups/get_groups/?api_token=${localStorage.api_key}`;
-    let con = `<div class="loader">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>`;
-    $('.group-row').html(con)
-    $('.user-group-row').html(con)
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -74,6 +66,7 @@ function getGroups() {
         $('.user-group-row').append(data.message)
         $('.group-row').append(data.message)
       }
+      $('.page-loader').hide()
     })
     .catch(err => {
         console.log(err)

@@ -72,7 +72,7 @@ function authenticate() {
                 localStorage.setItem('dp', data.data.image)
             }
             localStorage.setItem('names', `${data.data.first_name} ${data.data.last_name}`);
-            location.href = './admin.html'
+            location.href = '/'
         }
         else if(data['status'] == 'error') {
             $('#admin_err').html(`<i class="fa fa-warning"></i> ${data['message']}`)
@@ -109,7 +109,7 @@ function logout() {
             localStorage.removeItem('username');
             sessionStorage.removeItem('user_skills');
             sessionStorage.removeItem('skills');
-            location.href = './index.html'
+            location.href = './login.html'
         }
         else if(data['status'] == 'error') {
             console.log(data)

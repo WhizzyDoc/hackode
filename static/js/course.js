@@ -1,3 +1,4 @@
+var timer;
 
   function getSkills() {
     let url = `${base_url}skills/get_user_skills/?api_token=${localStorage.api_key}`;
@@ -41,6 +42,7 @@
       else if(data['status'] == 'error') {
         $('.skill-row').append(data.message)
       }
+      $('.page-loader').hide()
     })
     .catch(err => {
         console.log(err)
@@ -255,7 +257,7 @@
   }
 
   function getMaterials(id) {
-    let url = `${base_url}courses/get_materials/?course_id=${id}`;
+    let url = `${base_url}courses/get_materials/?course_id=${id}&api_token=${localStorage.api_key}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -266,6 +268,7 @@
             d = data.data
             for(var i in d) {
                 let icon, clas;
+                let read = `<i class="fa fa-chevron-right"></i>`
                 if(d[i].active === true) {
                     icon = `<i class="w-text-red fa fa-certificate"></i>`;
                     clas = 'm-active'
@@ -274,10 +277,13 @@
                     icon = `<i class="w-text-red fa fa-lock"></i>`;
                     clas = 'm-inactive'
                 }
+                if(d[i].read === true) {
+                    read = `<i class="w-text-green fa fa-check"></i>&nbsp;`;
+                }
                 var temp = `
                 <tr class="q-item ${clas}" data-id="${d[i].order}" data-name="${d[i].topic.id}">
                     <td>${icon}&nbsp;&nbsp;${d[i].topic.title}<td>
-                    <td><i class="fa fa-chevron-right"></i></td>
+                    <td>${read}</td>
                 </tr>`;
                 $('.mat-row').append(temp)
             }
@@ -396,6 +402,7 @@
         swal('Info', "You have reached the last topic", 'info')
         return
     }
+    stopReading()
     let url = `${base_url}courses/get_next_material/?topic_id=${id}&order=${order}&type=${type}`;
     let con = `<div class="loader">
             <div class="ball"></div>
@@ -411,9 +418,11 @@
     $('.mat-content').empty()
       //console.log(data);
       if(data['status'] == 'success') {
+        
         d = data.data
         $('.mat-title').html(d.topic.title);
         $('.mat-content').html(d.content);
+        startReading(d.id)
         $('.prev-b').data('id', id)
         $('.prev-b').data('name', d.order-1)
         $('.next-b').data('id', id)
@@ -442,6 +451,7 @@
       });
       $pre.append($button);
       $pre.append($tryit);
+      
     });
 
       }
@@ -581,6 +591,26 @@ function submitProject(id) {
     })
 }
 
+function startReading(id) {
+    timer = setTimeout(function() {
+        console.log(`Material ${id} Read`)
+        var url = `${base_url}courses/read_material/?material_id=${id}&api_token=${localStorage.api_key}`;
+        fetch(url)
+        .then(res => {return res.json()})
+        .then(data => {
+            //console.log(data)
+            if(data.status == 'success') {
+                getMaterials(data.data.id)
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }, 5000);
+}
+function stopReading() {
+    clearTimeout(timer)
+}
 
   function submitQuiz() {
     let marked_answers = []

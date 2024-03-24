@@ -103,6 +103,31 @@ body {
     background: url("../image/home_bg.png") no-repeat fixed center;
     background-size: 100% 100%;
   }
+  .page-loader {
+    z-index: 180;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 50px;
+  }
+  .page-loader i {
+    animation: load 1s linear infinite;
+  }
+  @keyframes load {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+  }
+  @-webkit-keyframes load {
+    from {-webkit-transform: rotate(0deg)}
+    to {-webkit-transform: rotate(360deg)}
+  }
   .side-con {
     position: fixed;
     width: calc(100% - 250px);

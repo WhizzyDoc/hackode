@@ -18,10 +18,11 @@ function getProfile() {
         else if(data['status'] == 'error') {
             swal('Error', data['message'], 'error')
         }
+        $('.page-loader').hide()
     })
     .catch(err => {
         console.log(err);
-        swal("Error", "Please check your internet connection", "error")
+        getProfile()
     })
 }
 getProfile();

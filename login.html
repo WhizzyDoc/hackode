@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/rigan.css">
+    <link rel="stylesheet" type="text/css" href="./static/themes/w-theme-blue.css">
+    <link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/sweetalert.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/login.css">
+    <script src="./static/module/swif.js"></script>
+    <script src="./dist/jquery.min.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+    <script src="./static/js/owl.carousel.min.js"></script>
+    <script src="./static/js/sweetalert.min.js"></script>
+    <script src="./dist/semantic.min.js"></script> 
+    <title></title>
+    <!-- Templates -->
+    <template id="404">
+        <?include: "templates/_parts/404.html"?><?end?>
+    </template>
+
+    <!-- Home -->
+    <template id="home">
+      <div class="owl-carousel dash">
+        <div class="slider-con">
+          <img src="./static/image/slide1.jpeg" alt="">
+          <div class="slider-text w-text-white">
+            <h2 class="w-bold-xx">Welcome to RIGLEARN</h2>
+            <h3 class="w-bold-x">Unlock Your Potential</h3>
+            <p>
+              Discover a world of learning opportunities with RIGLEARN. 
+              Our platform offers a diverse range of online courses tailored to your interests and aspirations. 
+              From computer science to finance, explore new horizons and enhance your skills from anywhere, anytime.
+            </p>
+          </div>
+        </div>
+        <div class="slider-con">
+          <img src="./static/image/slide2.jpeg" alt="">
+          <div class="slider-text w-text-black">
+            <h2 class="w-bold-xx">Why Choose RIGLEARN?</h2>
+            <h3 class="w-bold-x">Empower Yourself</h3>
+            <p>
+              Join a community of learners and experts dedicated to continuous growth and development. 
+              with RIGLEARN, you gain access to high-quality courses, flexible learning options, and personalized guidance. 
+              Elevate your career, expand your knowledge, and unleash your potential with us.
+            </p>
+          </div>
+        </div>
+        <div class="slider-con">
+          <img src="./static/image/slide3a.jpeg" alt="">
+          <div class="slider-text w-text-white">
+            <h2 class="w-bold-xx">Start Your Learning Journey</h2>
+            <h3 class="w-bold-x">Experience Excellence</h3>
+            <p>
+              Ready to embark on your learning adventure? Sign up today and dive into a world of knowledge and opportunity. 
+              With intuitive interfaces, interactive content, and supportive instructors, RIGLEARN makes learning engaging and rewarding. 
+              Take the first step towards a brighter future.
+            </p>
+
+            <div class="action-btns">
+              <a href="#register" class="action-btn1">REGISTER NOW</a>
+              <a href="#login" class="action-btn2">LOGIN</a>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+    <script>
+      $(".dash").owlCarousel({
+        margin: 20,
+        loop: false,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        responsive: {
+          0:{
+          items:1,
+          nav: false
+          },
+          600:{
+          items:1,
+          nav: false
+          },
+          1300:{
+          items:2,
+          nav: false
+          }
+        }
+      });
+    </script>
+    </template>
+    <!-- login -->
+  <template id="login">
+    <div class="row">
+        <div class="login-form col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">   
+          <div class="wrapper">
+                      <form class="admin-login-form" action="#">
+                        <h2>Login</h2>
+                          <div class="input-field">
+                          <input type="text" id="admin-username" required>
+                          <label>Enter Your Username</label>
+                        </div>
+                        <div class="input-field">
+                          <input type="password" id="admin-password" required>
+                          
+                          <label>Enter your password</label>
+                        </div>
+                        <p class="mt-2 w-text-yellow" id="admin_err"></p>
+                        <div class="forget">
+                          <label for="remember">
+                            <input type="checkbox" id="remember">
+                            <p>Remember me</p>
+                          </label>
+                          <a href="#forgot_password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="login-btn">Log In</button>
+                        <div class="register">
+                          <p>Don't have an account? <a href="#register">Create Account</a></p>
+                        </div>
+                      </form>
+          </div>
+            
+        </div>
+    </div>
+    <script>
+        $('.view-pass').click(function() {
+            var input = $(this).siblings('input');
+            if(input.attr('type') == 'password') {
+                input.attr('type', 'text');
+                $(this).children('span').html(`<i class="fa fa-eye-slash"></i>`)
+            }
+            else {
+                input.attr('type', 'password')
+                $(this).children('span').html(`<i class="fa fa-eye"></i>`)
+            }
+        })
+        
+        $('.admin-login-form').submit(function(e) {
+            e.preventDefault();
+            authenticate();
+        })
+  
+    </script>
+  </template>
+
+  <!-- forgot password -->
+  <template id="forgot_password">
+    <div class="row">
+        <div class="login-form col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">   
+          <div class="wrapper">
+                      <form class="forgot-password-form" action="#">
+                        <h2>Forgot Password</h2>
+                          <div class="input-field">
+                          <input type="text" id="forg-email" required>
+                          <label>Enter Your Email</label>
+                        </div>
+                        <button type="submit" class="forgot-btn">Reset Password</button>
+                      </form>
+          </div>
+            
+        </div>
+    </div>
+    <script>
+        
+        $('.forgot-password-form').submit(function(e) {
+            e.preventDefault();
+            forgotPassword();
+        })
+  
+    </script>
+  </template>
+
+  <!-- login -->
+  <template id="register">
+    <div class="row">
+        <div class="login-form col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+              
+                    <form class="register-form">
+                      <h2>Sign Up</h2>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="f-name" placeholder="First Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="l-name" placeholder="Last Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" id="reg-username" placeholder="Username" required>
+                          <p class="mt-2 w-text-red" id="user_err"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="reg-pass" placeholder="Password" required>
+                            <div class="input-group-append view-pass">
+                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
+                            </div>
+                            <p class="mt-2 w-text-red" id="pass_err"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" required>
+                            <div class="input-group-append view-pass">
+                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
+                            </div>
+                            
+                        </div>
+                        <p class="mt-2 w-text-red" id="cpass_err"></p>
+                        <p class="mt-2 w-text-red" id="register_err"></p>
+                        <button type="submit" class="register-btn btn btn-block btn-primary">Create Account</button>
+                        <p class="mt-2">Already A Member? <a href="#login">Log In</a></p>
+                    </form>
+
+        </div>
+    </div>
+    <script>
+        $('.view-pass').click(function() {
+            var input = $(this).siblings('input');
+            if(input.attr('type') == 'password') {
+                input.attr('type', 'text')
+                $(this).children('span').html(`<i class="fa fa-eye-slash"></i>`)
+            }
+            else {
+                input.attr('type', 'password')
+                $(this).children('span').html(`<i class="fa fa-eye"></i>`)
+            }
+        });
+        $('.register-form').submit(function(e) {
+            e.preventDefault();
+            register();
+        })
+    </script>
+  </template>
+
+
+    <!-- Routes -->
+<!-- homepage -->
+<template route="/">
+    <?use-template: "home"?>
+  </template>
+  <template route="/login">
+    <?use-template: "login"?>
+  </template>
+  <template route="/register">
+    <?use-template: "register"?>
+  </template>
+  <template route="/forgot_password">
+    <?use-template: "forgot_password"?>
+  </template>
+    <script>
+        var on = XJSX.event.on,
+        emit = XJSX.event.emit;
+        emit("hashchange");
+    </script>
+</head>
+<body>
+    <script>
+        if(localStorage.api_key) {
+            location.href = '/';
+        }
+    </script>
+    <?on: "hashchange"?>
+
+<?eval:
+"var hash=location.hash
+hash=hash.replace(/^\/?#\/?|^/img,'/')
+var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
+
+<?use-template: page?>
+<?end?>
+
+    <script src="./static/js/functions.js"></script>
+    <script src="./static/js/login.js"></script>
+    
+</body>
+</html>

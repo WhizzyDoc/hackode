@@ -6,15 +6,14 @@ window.Apex = {
   };
 
   function drawViewChart(d) {
-    //alert('gotten')
-    if(d['status'] == 'success') {
-      if(d.data) {
+    console.log(d)
+      if(d) {
         let prices = []
         let titles = []
-        for(var i in d.data) {
-          p = d.data;
-          prices.push(p[i].price)
-          titles.push(p[i].title)
+        for(var i in d) {
+          console.log(i)
+          prices.push(d[i])
+          titles.push(i)
         }
         var optionsBar = {
           chart: {
@@ -35,7 +34,7 @@ window.Apex = {
           },
           colors: ["#00C5A4"],
           series: [{
-            name: "Prices",
+            name: "Scores",
             data: prices,
           }],
           labels: titles,
@@ -83,11 +82,11 @@ window.Apex = {
             offsetY: -36
           },
           title: {
-            text: 'Skill Prices',
+            text: 'Quiz Scores',
             align: 'left',
           },
           subtitle: {
-            text: 'Prices'
+            text: 'Scores'
           },
           tooltip: {
             shared: true,
@@ -99,9 +98,9 @@ window.Apex = {
         chartBar.render();
       }
       else {
-        document.querySelector('#bar').innerHTML = `<h3 class="w-text-grey">No registered skill yet</h3>`
+        document.querySelector('#bar').innerHTML = `<h3 class="w-text-grey">You have not done any quiz yet.</h3>`
       }
-    }
+    
   }
   
   function drawPendChart(pend, tot) {
