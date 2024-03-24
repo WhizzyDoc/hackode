@@ -606,7 +606,7 @@ function startReading(id) {
         .catch(err => {
             console.log(err);
         })
-    }, 5000);
+    }, 30000);
 }
 function stopReading() {
     clearTimeout(timer)
