@@ -260,3 +260,11 @@ form button {
     color: #000;
     border: 2px solid #000;
   }
+  .net-alert {
+    position: fixed !important;
+    bottom: 50px;
+    left: 5vw;
+    width: 90vw;
+    z-index: 300;
+    display: none;
+  }

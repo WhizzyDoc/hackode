@@ -28,6 +28,7 @@ function loadGPTMessages() {
     })
     .then(data => {
         //console.log(data)
+        $('.net-alert').hide()
         $('#gpt-content').empty()
         if(data['status'] == 'success') {
             if(!data.data) {
@@ -105,6 +106,8 @@ function loadGPTMessages() {
     })
     .catch(error => {
         console.log(error);
+        $('.net-alert').show()
+        loadGPTMessages()
     })
 }
 loadGPTMessages()
@@ -120,6 +123,7 @@ function loadHistory() {
     })
     .then(data => {
         //console.log(data)
+        $('.net-alert').hide()
         $('.gpt-row').empty()
         if(data['status'] == 'success') {
             h = data.data;
@@ -155,6 +159,8 @@ function loadHistory() {
     })
     .catch(error => {
         console.log(error);
+        $('.net-alert').show()
+        loadHistory()
     })
 }
 
@@ -252,7 +258,7 @@ function sendGPTChat() {
     .catch(err => {
         var temp = `<div class="message-con">
                     <div class="chat other">
-                        <div class="msg error-message">${err}</div>
+                        <div class="msg error-message">Eror! You seem to have a problem with yor internet connection</div>
                     </div>
                 </div>`;
             $('#gpt-content').append(temp);
@@ -299,6 +305,7 @@ function createGPTRoom() {
     })
     .catch(err => {
         console.log(err);
+        $('.net-alert').show()
         $('.create-new-room').attr('disabled', false).html(`<i class="fa fa-plus"></i> New Conversation`)
     })
 }

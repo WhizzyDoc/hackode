@@ -1317,3 +1317,44 @@ text-align: justify;
   border: none;
   outline: none;
 }
+.mat-bar-con {
+  width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  left: 5vw;
+}
+.mat-bar {
+  width: 60%;
+  position: relative;
+  margin: auto;
+  height: 8px;
+  background: #fff;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.mat-progress {
+  width: 0%;
+  height: 100%;
+  background: red;
+  transition: width .5s ease;
+}
+.mat-per {
+  color: #fff;
+  width: 40%;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+.net-alert {
+  position: fixed !important;
+  bottom: 50px;
+  left: 5vw;
+  width: 90vw;
+  z-index: 300;
+  display: none;
+}

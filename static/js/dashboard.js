@@ -5,7 +5,8 @@
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      console.log(data);
+      //console.log(data);
+      $('.net-alert').hide()
       if(data.status == 'success') {
         drawViewChart(data.scores_data)
       }
@@ -13,6 +14,7 @@
     })
     .catch(err => {
       console.log(err);
+      $('.net-alert').show()
       getData()
     })
   }

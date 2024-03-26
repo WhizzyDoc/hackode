@@ -41,7 +41,7 @@ function register() {
     })
     .catch(err => {
         console.log(err);
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
         $('.register-btn').html('Create Account').attr('disabled', false)
     })
 }
@@ -82,7 +82,7 @@ function authenticate() {
     })
     .catch(err => {
         console.log(err);
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
         $('.login-btn').html('Log In').attr('disabled', false);
     })
 }
@@ -118,8 +118,7 @@ function logout() {
     })
     .catch(err => {
         console.log(err);
-        swal("Error", "Please check your internet connection", "error")
-        swal('Error', "Error occured", "error")
+        $('.net-alert').show()
     })
 }
 

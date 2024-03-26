@@ -28,6 +28,7 @@ function changePassword() {
     })
     .catch(err => {
       console.log(err)
+      $('.net-alert').show()
       $('.pass-btn').html('Change Password').attr('disabled', false)
     })
 }

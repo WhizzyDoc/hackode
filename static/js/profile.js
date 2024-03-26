@@ -5,6 +5,7 @@ function getProfile() {
     .then(res => {return res.json()})
     .then(data => {
         //console.log(data)
+        $('.net-alert').hide()
         if(data['status'] == 'success') {
             p = data.data
             $('#fname').val(p.first_name)
@@ -22,6 +23,7 @@ function getProfile() {
     })
     .catch(err => {
         console.log(err);
+        $('.net-alert').show()
         getProfile()
     })
 }
@@ -83,7 +85,7 @@ function saveProfile() {
     })
     .catch(err => {
         console.log(err);
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
         $('.comp-btn').html('Save Profile').attr('disabled', false)
     })
 }

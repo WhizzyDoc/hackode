@@ -3,7 +3,8 @@ function getGroups() {
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      console.log(data);
+      //console.log(data);
+      $('.net-alert').hide()
       $('.user-group-row').empty()
       $('.group-row').empty()
       if(data['status'] == 'success') {
@@ -70,8 +71,8 @@ function getGroups() {
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
-        //getGroups()
+        $('.net-alert').show()
+        getGroups()
     })
   }
 

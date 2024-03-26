@@ -12,6 +12,7 @@ function getSkills() {
     .then(data => {
       //console.log(data);
       $('.skill-row').empty()
+      $('.net-alert').hide()
       if(data['status'] == 'success') {
         if(data.data) {
             d = data.data
@@ -51,6 +52,7 @@ function getSkills() {
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getSkills()
     })
   }
@@ -107,6 +109,7 @@ function getSkills() {
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
+      $('.net-alert').hide()
         $('.skill-detail').empty()
         $('.skill-courses').empty()
         $('.skill-reviews').empty()
@@ -139,7 +142,8 @@ function getSkills() {
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
+        getSkill(id)
     })
   }
 
@@ -150,6 +154,7 @@ function getSkills() {
     .then(data => {
       //console.log(data);
       $('.skill-courses').empty()
+      $('.net-alert').hide()
       if(data['status'] == 'success') {
         if(data.data) {
             d = data.data
@@ -172,7 +177,7 @@ function getSkills() {
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
         getSkillCourses(id)
     })
   }
@@ -184,6 +189,7 @@ function getSkills() {
     .then(data => {
       //console.log(data);
       $('.skill-reviews').empty()
+      $('.net-alert').hide()
       if(data['status'] == 'success') {
         if(data.data) {
             d = data.data
@@ -223,7 +229,8 @@ function getSkills() {
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
+        getSkillReviews(id)
     })
   }
 
@@ -266,7 +273,7 @@ function getSkills() {
     .catch(err => {
         console.log(err)
         elem.html(`Enroll Now`).attr('disabled', false)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
     })
   }
 
@@ -326,6 +333,6 @@ function getSkills() {
     .catch(err => {
         console.log(err)
         $('.pay-btn').html(`Proceed with Payment`).attr('disabled', false)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
     })
   }

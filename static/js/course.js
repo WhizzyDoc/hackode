@@ -6,6 +6,7 @@ var timer;
     .then(res => {return res.json()})
     .then(data => {
       //console.log(data);
+      $('.net-alert').hide()
       $('.skill-row').empty()
       if(data['status'] == 'success') {
         if(data.data) {
@@ -46,6 +47,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getSkills()
     })
   }
@@ -57,6 +59,7 @@ var timer;
     .then(res => {return res.json()})
     .then(data => {
       //console.log(data);
+      $('.net-alert').hide()
       $('.course-row').empty()
       if(data['status'] == 'success') {
         if(data.data) {
@@ -89,7 +92,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
-        
+        $('.net-alert').show()
         getSkillCourses(id)
     })
   }
@@ -101,6 +104,7 @@ var timer;
     .then(data => {
       //console.log(data);
       $('.pro-row').empty()
+      $('.net-alert').hide()
       if(data['status'] == 'success') {
         if(data.data) {
             d = data.data
@@ -147,6 +151,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getSkillProjects(id)
     })
   }
@@ -157,6 +162,7 @@ var timer;
     .then(res => {return res.json()})
     .then(data => {
       //console.log(data);
+      $('.net-alert').hide()
       $('.quiz-row').empty()
       if(data['status'] == 'success') {
         if(data.data) {
@@ -205,6 +211,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getQuizzes(id)
     })
   }
@@ -215,6 +222,7 @@ var timer;
     .then(res => {return res.json()})
     .then(data => {
       //console.log(data);
+      $('.net-alert').hide()
       $('.vid-row').empty()
       if(data['status'] == 'success') {
         if(data.data) {
@@ -252,6 +260,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getVideos(id)
     })
   }
@@ -261,11 +270,16 @@ var timer;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      //console.log(data);
+      console.log(data);
+      $('.net-alert').hide()
       $('.mat-row').empty()
+      $('.mat-per').html(`0% Completed`)
+            $('.mat-progress').css({'width': `0%`})
       if(data['status'] == 'success') {
         if(data.data) {
             d = data.data
+            $('.mat-per').html(`${data.percentage_read}% Completed`)
+            $('.mat-progress').css({'width': `${data.percentage_read}%`})
             for(var i in d) {
                 let icon, clas;
                 let read = `<i class="fa fa-chevron-right"></i>`
@@ -316,6 +330,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getMaterials(id)
     })
   }
@@ -334,6 +349,7 @@ var timer;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
+        $('.net-alert').hide()
         $('.quiz-ques').empty()
         $('.quiz-ind').empty()
       console.log(data);
@@ -384,6 +400,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getQuiz(id)
     })
   }
@@ -417,6 +434,7 @@ var timer;
     .then(data => {
     $('.mat-content').empty()
       //console.log(data);
+      $('.net-alert').hide()
       if(data['status'] == 'success') {
         
         d = data.data
@@ -471,7 +489,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
     })
   }
 
@@ -489,8 +507,9 @@ var timer;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
+        $('.net-alert').hide()
         $('.vid-content').empty()
-        console.log(data);
+        //console.log(data);
       if(data['status'] == 'success') {
         d = data.data
         $('.vid-title').html(d.title);
@@ -503,6 +522,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getVideo(id)
     })
   }
@@ -513,6 +533,7 @@ var timer;
     .then(res => {return res.json()})
     .then(data => {
       //console.log(data);
+      $('.net-alert').hide()
       $('.pro-detail').empty()
       $('.comment-con').empty()
       if(data['status'] == 'success') {
@@ -558,6 +579,7 @@ var timer;
     })
     .catch(err => {
         console.log(err)
+        $('.net-alert').show()
         getProject(id)
     })
 }
@@ -587,7 +609,7 @@ function submitProject(id) {
     .catch(err => {
         console.log(err);
         $('.submit-form-btn').html(`Submit Project`).attr('disabled', false)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
     })
 }
 
@@ -679,7 +701,7 @@ function stopReading() {
     })
     .catch(err => {
         console.log(err)
-        swal("Error", "Please check your internet connection", "error")
+        $('.net-alert').show()
     })
   }
   function escapeHtml(str) {
