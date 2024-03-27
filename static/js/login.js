@@ -72,7 +72,7 @@ function authenticate() {
                 localStorage.setItem('dp', data.data.image)
             }
             localStorage.setItem('names', `${data.data.first_name} ${data.data.last_name}`);
-            location.href = '/'
+            location.href = './'
         }
         else if(data['status'] == 'error') {
             $('#admin_err').html(`<i class="fa fa-warning"></i> ${data['message']}`)
