@@ -37,7 +37,7 @@
   <template id="sidenav">
     <div class="page-loader">
       <i class="fa fa-spinner"></i>
-  </div>
+    </div>
     <div class="bottom-nav w-card-8">
       <div class="dash-act"><a href="#"><i class="fa fa-th-large"></i><br>Home</a></div>
       <div class="course-act"><a href="#courses"><i class="fa fa-laptop"></i><br>Courses</a></div>
@@ -737,6 +737,62 @@ for (i = 0; i < acc.length; i++) {
           
         </main>
 
+        <div class="group_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn back"><i class="fa fa-arrow-left"></i></button>
+
+            <div class="group-content">
+              
+            </div>
+            <table class="table w-margin-top">
+              <tbody class="grp-table">
+                <tr class="grp-det" data-id="" data-action="post" data-name="">
+                  <td>Posts</td>
+                  <td><i class="fa fa-chevron-right"></i></td>
+                </tr>
+                <tr class="grp-det" data-id="" data-action="members" data-name="">
+                  <td>Members</td>
+                  <td><i class="fa fa-chevron-right"></i></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+        <div class="post_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn back"><i class="fa fa-arrow-left"></i></button>
+
+            <h2 class="w-text-white"><span class="grp-tit2 w-text-white"></span> Posts</h2>
+            
+
+          </div>
+        </div>
+
+        <div class="mem_c_con side-con">
+          <div class="mb-2">
+            <button class="add_emp_btn c_back_btn back"><i class="fa fa-arrow-left"></i></button>
+
+            <div class="group-content">
+              
+            </div>
+            <table class="table w-margin-top">
+              <tbody class="grp-table">
+                <tr class="grp-det" data-id="" data-action="post" data-name="">
+                  <td>Posts</td>
+                  <td><i class="fa fa-chevron-right"></i></td>
+                </tr>
+                <tr class="grp-det" data-id="" data-action="member" data-name="">
+                  <td>Members</td>
+                  <td><i class="fa fa-chevron-right"></i></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
         <script src="./static/js/community.js"></script>
     <script>
       $('.pro-act').addClass('active');
@@ -752,7 +808,22 @@ for (i = 0; i < acc.length; i++) {
               }
             })
           })
-
+      $('.c_back_btn').click(function() {
+        $(this).parent('div').parent('.side-con').removeClass('active')
+      })
+      $('.grp-det').click(function() {
+        var id = $(this).data('id')
+        var name = $(this).data('name')
+        var action = $(this).data('action')
+        if(action == "post") {
+          $('.post_c_con').addClass('active')
+          getPosts(id, name)
+        }
+        else if(action == "members") {
+          $('.mem_c_con').addClass('active')
+          getMembers(id, name)
+        }
+      })
     </script>
   </template>
 
@@ -915,8 +986,9 @@ for (i = 0; i < acc.length; i++) {
         <main class="">
           <h2 class="w-bold-x w-center w-text-white">Notifications</h2>
           <div class="empty"></div>
+
         </main>
-        <script src=""></script>
+        <script src="./static/js/notifications.js"></script>
     <script>
       $('.page-loader').hide()
       $('.note-act').addClass('active');

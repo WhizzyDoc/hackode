@@ -22,11 +22,8 @@ function getGroups() {
             $('.com-item').click(function() {
                 let id = $(this).data('id')
                 let name = $(this).data('name')
-                //$('.skill-title').html(name)
-                //$('.ski_c_con').addClass('active')
-                //getSkill(id)
-                //getSkillReviews(id);
-                //getSkillCourses(id)
+                $('.group_c_con').addClass('active')
+                getGroup(id, name)
             })
         }
         else {
@@ -52,11 +49,8 @@ function getGroups() {
             $('.sk-item').click(function() {
                 let id = $(this).data('id')
                 let name = $(this).data('name')
-                //$('.skill-title').html(name)
-                //$('.ski_c_con').addClass('active')
-                //getSkill(id)
-                //getSkillReviews(id);
-                //getSkillCourses(id)
+                $('.group_c_con').addClass('active')
+                getGroup(id, name)
             })
         }
         else {
@@ -77,3 +71,71 @@ function getGroups() {
   }
 
   getGroups()
+
+  function getGroup(id, name) {
+    $('.page-loader').show()
+    let url = `${base_url}groups/get_group/?group_id=${id}`;
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+        $('.net-alert').hide()
+        //console.log(data);
+        $('.page-loader').hide()
+      if(data['status'] == 'success') {
+        d = data.data
+        let img = ""
+        let des = ''
+        if(d.image) {
+           img = `${base_image_url}${d.image}`
+        }
+        else {
+            img = `./static/image/group.png`
+        }
+        if(d.description.trim() !== "") {
+            des  = `<div class="h6 w-bold grp-des" style="text-align:center">${d.description}</div>`
+        }
+        let temp = `<img class="grp-img" src="${img}" alt="" />
+        <h2 class="grp-tit w-text-blue">${d.title}</h2>
+        ${des}
+        <p class="grp-mem w-text-grey"><i class="fa fa-group"></i> ${digify(data.members)} members&nbsp;&nbsp;<small><i class="fa fa-circle"></i></small>&nbsp;&nbsp;<i class="fa fa-newspaper-o"></i> ${digify(data.posts)} posts</p>`
+        $('.group-content').html(temp)
+        $('.grp-det').data('id', d.id)
+        $('.grp-det').data('name', d.title)
+      }
+      else if(data['status'] == 'error') {
+        swal('Error', data.message, 'error')
+      }
+    })
+    .catch(err => {
+        console.log(err)
+        $('.net-alert').show()
+        getGroup(id, name)
+    })
+  }
+
+  function getPosts(id, name) {
+    $('.page-loader').show()
+    let url = `${base_url}groups/get_group_posts/?group_id=${id}`;
+    $('.grp-tit2').html(name)
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+        $('.net-alert').hide()
+        //console.log(data);
+        $('.page-loader').hide()
+      if(data['status'] == 'success') {
+        d = data.data
+        
+      }
+      else if(data['status'] == 'error') {
+        swal('Error', data.message, 'error')
+      }
+    })
+    .catch(err => {
+        console.log(err)
+        $('.net-alert').show()
+        getPosts(id, name)
+    })
+  }
+
+  function getMembers(id, name) {}

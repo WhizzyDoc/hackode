@@ -17,13 +17,18 @@ function getSkills() {
         if(data.data) {
             d = data.data
             for(var i in d) {
+              let price;
+              if(d[i].price > 0) {
+                price = `&#8358;${digify(d[i].price)}`
+              }
+              else {price = "Free"}
                 var temp = `
                 <div class="sk-item" data-id="${d[i].id}" data-name="${d[i].title}">
                     <img src="${base_image_url}${d[i].image}" alt="">
                     <div class="sk-des">
                         <div class="sk-title">${d[i].title}</div>
                         <div class="w-text-gray sk-num">
-                            <div>&#8358;${digify(d[i].price)}</div>
+                            <div>${price}</div>
                             <div><i class="fa fa-book"></i> ${data.c_count[i]} courses</div>
                             <div><i class="fa fa-calendar"></i> ${d[i].duration}</div>
                         </div>
@@ -116,12 +121,17 @@ function getSkills() {
       //console.log(data);
       if(data['status'] == 'success') {
         d = data.data
+        let price;
+        if(d.price > 0) {
+          price = `&#8358;${digify(d.price)}`
+        }
+        else {price = "Free"}
         $('.skill-img').attr('src', `${base_image_url}${d.image}`);
         $('.enroll-btn').data('id', d.id)
         let temp = `
         <div class="w-text-white w-flex w-flex-start w-align-center w-flex-wrap">
                             <div><i class="fa fa-certificate"></i> ${d.category.title}</div>&nbsp;&nbsp;
-                            <div><i class="fa fa-money"></i> &#8358;${digify(d.price)}</div>&nbsp;&nbsp;
+                            <div><i class="fa fa-money"></i> ${price}</div>&nbsp;&nbsp;
                             <div><i class="fa fa-calendar"></i> ${d.duration}</div>
                         </div>`;
                         
@@ -249,22 +259,28 @@ function getSkills() {
     })
     .then(res => {return res.json()})
     .then(data => {
-      console.log(data);
+      //console.log(data);
       elem.html(`Enroll Now`).attr('disabled', false)
       if(data.status == 'success') {
-        d = data.data;
-        $('#p_name').html(localStorage.names)
-        $('#p_email').html(d.email)
-        $('#p_amt').html(`&#8358;${d.amount}`)
-        $('#p_des').html(`${data.skill.title}`)
-        $('#p_ref').html(`${d.reference_id}`)
+        if(data.mode == 'free') {
+          swal('Success', data.message, 'success')
+          location.href = '#courses';
+        }
+        else if(data.mode == 'paid') {
+          d = data.data;
+          $('#p_name').html(localStorage.names)
+          $('#p_email').html(d.email)
+          $('#p_amt').html(`&#8358;${d.amount}`)
+          $('#p_des').html(`${data.skill.title}`)
+          $('#p_ref').html(`${d.reference_id}`)
 
-        $('#pay_email').val(d.email)
-        $('#pk').val(data.paystack_pub_key)
-        $('#ref_id').val(d.reference_id)
-        $('#pay_amt').val(d.amount)
+          $('#pay_email').val(d.email)
+          $('#pk').val(data.paystack_pub_key)
+          $('#ref_id').val(d.reference_id)
+          $('#pay_amt').val(d.amount)
 
-        $('.pay_c_con').addClass('active')
+          $('.pay_c_con').addClass('active')
+        }
       }
       else {
         swal(data.status, data.message, data.status)

@@ -9,6 +9,7 @@
       $('.net-alert').hide()
       if(data.status == 'success') {
         drawViewChart(data.scores_data)
+        drawPendChart(data.progress_data)
       }
       $('.page-loader').hide()
     })

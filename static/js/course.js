@@ -270,7 +270,7 @@ var timer;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      console.log(data);
+      //console.log(data);
       $('.net-alert').hide()
       $('.mat-row').empty()
       $('.mat-per').html(`0% Completed`)
@@ -292,7 +292,7 @@ var timer;
                     clas = 'm-inactive'
                 }
                 if(d[i].read === true) {
-                    read = `<i class="w-text-green fa fa-check"></i>&nbsp;`;
+                    read = `<i class="w-text-green fa fa-check"></i>`;
                 }
                 var temp = `
                 <tr class="q-item ${clas}" data-id="${d[i].order}" data-name="${d[i].topic.id}">

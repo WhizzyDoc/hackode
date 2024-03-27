@@ -6,7 +6,6 @@ window.Apex = {
   };
 
   function drawViewChart(d) {
-    console.log(d)
       if(d) {
         let prices = []
         let titles = []
@@ -103,8 +102,8 @@ window.Apex = {
     
   }
   
-  function drawPendChart(pend, tot) {
-    let ser = Math.floor(((tot - pend) / tot) * 100)
+  function drawPendChart(d) {
+    let ser = d
     var optionsCircle1 = {
       chart: {
         type: 'radialBar',
@@ -137,7 +136,7 @@ window.Apex = {
         show: false
       },
       title: {
-        text: 'Messages Replied',
+        text: 'Course Progress',
         align: 'left'
       }
     }
@@ -145,7 +144,6 @@ window.Apex = {
     var chartCircle1 = new ApexCharts(document.querySelector('#radialBar1'), optionsCircle1);
     chartCircle1.render();
   }
-  
   
   
   var optionsDonutTop = {
@@ -167,7 +165,7 @@ window.Apex = {
     },
     colors: ['#775DD0', '#00C8E1', '#FFB900', '#E91E63'],
     title: {
-      text: 'Course Progress'
+      text: 'Progress Analysis'
     },
     series: [15, 40, 20, 25],
     labels: ['A', 'P', 'S', 'R'],
