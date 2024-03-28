@@ -463,13 +463,13 @@ var timer;
         $('#colortext').css({'color': $(this).val()});
         $('#colorback').css({'background-color': $(this).val()});
         
-    let Color = $(this).val();
-    let x = [];
+    var Color = $(this).val();
+    var x = [];
     color = Color.replace('#', '')
     x.push(parseInt(color.slice(0, 2), 16))
     x.push(parseInt(color.slice(2, 4), 16))
     x.push(parseInt(color.slice(4, 6), 16))
-    $('#rgb').html(`rgb(" + x.toString() + ")`);
+    $('#rgb').html(`rgb(${x.toString()})`);
         
       })
       $tryit.click(function() {
