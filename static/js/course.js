@@ -458,6 +458,11 @@ var timer;
         $tempInput.remove();
         alert('Copied!');
       });
+      $('#color-picker').on('input', function() {
+        $('#hex').html($(this).val());
+        $('#colortext').css({'color': $(this).val()});
+        $('#colorback').css({'background-color': $(this).val()});
+      })
       $tryit.click(function() {
         var $tempInput = $('<textarea>');
         $('body').append($tempInput);
